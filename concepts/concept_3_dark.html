@@ -141,7 +141,6 @@
   .insights li:last-child .ix{background:#FCD34D}
   .insights li:last-child{background:rgba(252,211,77,.06)}
 
-  .pb-table{margin-top:20px}
 
   /* 과금 방식 */
   .bill-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
@@ -205,7 +204,8 @@
   #mp-calc .mpc__row--key dd{color:var(--em)}
   #mp-calc .mpc__save2{color:var(--cy);font-size:1.04rem}
   #mp-calc .mpc__store{border-top:2px dashed rgba(186,214,255,.22)}
-  #mp-calc .mpc__seg{background:#0D1628}
+  #mp-calc .mpc__seg{background:#0D1628;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));width:100%}
+  #mp-calc .mpc__seg-btn{padding:0 4px;min-height:52px}
   #mp-calc .mpc__seg-btn{color:var(--fg)}
   #mp-calc .mpc__seg-btn--on{background:var(--em);color:var(--ink)}
   #mp-calc .mpc__note{color:var(--muted);font-size:16px}
@@ -229,9 +229,53 @@
   .cta .btn{min-height:64px;font-size:1.15rem;padding:0 30px}
   footer{margin-top:72px;border-top:1px solid var(--line);padding:28px 0 44px;color:var(--fg2);font-size:1rem}
 
+
+  /* 히어로 범위 안내 */
+  .scope{display:flex;align-items:flex-start;gap:10px;margin:18px 0 0;padding:12px 16px;border-radius:14px;
+    background:rgba(103,232,249,.07);border:1px solid rgba(103,232,249,.35);color:var(--fg);font-weight:600;max-width:34em}
+  .scope::before{content:"";flex:none;width:8px;height:8px;margin-top:.62em;border-radius:50%;background:var(--cy);box-shadow:0 0 10px var(--cy)}
+  .hero-num-l{font-weight:700;color:var(--fg2);font-size:1.02rem}
+  .hero-num{font-size:clamp(2.4rem,4.2vw,3.4rem);font-weight:800;line-height:1.12;letter-spacing:-.02em;margin:6px 0 10px;color:var(--fg);text-shadow:0 0 30px rgba(103,232,249,.25)}
+  .hero-save{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px 12px;margin-top:22px;padding-top:16px;border-top:1px solid var(--line)}
+  .hero-save span{font-weight:700;color:var(--fg2)}
+  .hero-save b{font-size:1.5rem;font-weight:800;color:var(--em)}
+
+  /* 주제 2: 기존 대 파트너스 */
+  .vs-wrap{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:0 18px;align-items:stretch}
+  .vs-side{padding:34px 34px 30px;display:flex;flex-direction:column;border-radius:26px}
+  .vs-legacy{background:linear-gradient(180deg,rgba(143,160,186,.14),rgba(143,160,186,.05));border-color:rgba(186,214,255,.3)}
+  .vs-partners{background:radial-gradient(420px 260px at 85% 0%,rgba(103,232,249,.22),transparent 70%),linear-gradient(170deg,rgba(16,185,129,.26),rgba(16,185,129,.06) 75%);
+    border:1.5px solid rgba(52,211,153,.7);box-shadow:0 0 0 1px rgba(52,211,153,.15),0 30px 80px rgba(0,0,0,.45),0 0 90px rgba(16,185,129,.18)}
+  .vs-tag{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;font-weight:800;font-size:1.06rem}
+  .vs-legacy .vs-tag{background:rgba(143,160,186,.18);color:var(--fg);border:1px solid rgba(186,214,255,.35)}
+  .vs-partners .vs-tag{background:var(--em);color:var(--ink)}
+  .vs-k{margin-top:26px;font-weight:700;font-size:1.08rem;color:var(--fg2)}
+  .vs-big{font-size:clamp(2.8rem,5.6vw,4.6rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;margin-top:4px;color:var(--fg)}
+  .vs-partners .vs-big{color:#6EE7B7;text-shadow:0 0 36px rgba(52,211,153,.45)}
+  .vs-partners .vs-fee{color:var(--cy);text-shadow:0 0 36px rgba(103,232,249,.4)}
+  .vs-note{margin-top:8px;color:var(--fg2);font-size:1.02rem}
+  .vs-div{height:1px;margin:26px 0 0;background:linear-gradient(90deg,rgba(186,214,255,.35),transparent)}
+  .vs-mid{display:flex;align-items:center;justify-content:center;position:relative}
+  .vs-mid::before{content:"";position:absolute;top:10%;bottom:10%;left:50%;width:2px;transform:translateX(-50%);background:linear-gradient(180deg,transparent,rgba(103,232,249,.6),transparent)}
+  .vs-mid span{position:relative;display:grid;place-items:center;width:72px;height:72px;border-radius:50%;font-weight:800;font-size:1.06rem;color:var(--fg);
+    background:#0B1424;border:1.5px solid rgba(103,232,249,.6);box-shadow:0 0 30px rgba(34,211,238,.3)}
+  .vs-points{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;counter-reset:vp}
+  .vs-points li{counter-increment:vp;padding:20px 22px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:start}
+  .vs-points li::before{content:counter(vp);width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-weight:800;color:var(--ink);background:linear-gradient(135deg,var(--em),var(--cy))}
+
+  /* 누적 비용 */
+  .cost-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px;margin-top:20px;align-items:stretch}
+  .insights li.honest{background:rgba(252,211,77,.07);border-left:4px solid #FCD34D}
+  .insights li.honest .ix{background:#FCD34D}
+
   /* 태블릿 이하: 표를 카드로 */
   @media (max-width:900px){
-    .hero-grid,.pb-grid{grid-template-columns:minmax(0,1fr)}
+    .hero-grid,.pb-grid,.cost-grid{grid-template-columns:minmax(0,1fr)}
+    .vs-wrap{grid-template-columns:minmax(0,1fr);gap:0}
+    .vs-mid{height:84px}
+    .vs-mid::before{top:0;bottom:0}
+    .vs-big{font-size:clamp(2.8rem,9vw,4.4rem)}
+    .vs-points{grid-template-columns:minmax(0,1fr)}
     .chips,.bill-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     .tbl-box{background:transparent;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
     .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}
@@ -277,6 +321,9 @@
     .ul li{padding:13px 16px 13px 42px}
     .ul li::before{left:18px;top:23px}
     .kpi-strip{padding:18px}
+    .vs-side{padding:24px 20px 22px}
+    .vs-points li{padding:16px}
+    .scope{padding:12px 14px}
   }
   @media (min-width:1024px){
     #mp-calc .mpc{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:28px;align-items:start}
@@ -310,15 +357,17 @@
       <span class="badge"><span class="dot" aria-hidden="true"></span><span data-bind="hero.badge"></span></span>
       <h1 id="hero-title"></h1>
       <p class="sub" data-bind="hero.sub"></p>
+      <p class="scope" data-bind="hero.scope"></p>
       <div class="cta-row">
         <a class="btn btn--pri" href="#calc" data-bind="hero.ctaPrimary"></a>
         <a class="btn btn--ghost" href="#contact" data-bind="hero.ctaSecondary"></a>
       </div>
     </div>
     <div class="panel save-panel">
-      <div class="save-label" data-bind="compare.saveLabel"></div>
-      <div class="save-value num" data-bind="compare.saveValue"></div>
+      <div class="hero-num-l" id="hero-num-l"></div>
+      <div class="hero-num num" data-v="equipNew10"></div>
       <div id="hero-bars"></div>
+      <div class="hero-save"><span data-bind="compare.saveLabel"></span><b class="num" data-bind="compare.saveValue"></b></div>
     </div>
   </div>
   <div class="stats" id="stats"></div>
@@ -326,7 +375,7 @@
 
 <section class="wrap" id="compare">
   <div class="sec-head">
-    <div class="eyebrow">비교</div>
+    <div class="eyebrow">장비 대금</div>
     <h2 data-bind="compare.title"></h2>
     <p class="lead" data-bind="compare.lead"></p>
   </div>
@@ -335,24 +384,33 @@
   <p class="foot" data-bind="compare.foot"></p>
 </section>
 
-<section class="wrap" id="payback">
+<section class="wrap" id="vs">
   <div class="sec-head">
-    <div class="eyebrow">회수 기간</div>
-    <h2 data-bind="payback.title"></h2>
-    <p class="lead" data-bind="payback.lead"></p>
+    <div class="eyebrow">비교</div>
+    <h2 data-bind="vs.title"></h2>
+    <p class="lead" data-bind="vs.lead"></p>
   </div>
-  <div class="pb-grid">
+  <div class="vs-wrap" id="vs-box"></div>
+  <ol class="vs-points" id="vs-points"></ol>
+</section>
+
+<section class="wrap" id="cost">
+  <div class="sec-head">
+    <div class="eyebrow">누적 비용</div>
+    <h2 data-bind="cost.title"></h2>
+    <p class="lead" data-bind="cost.lead"></p>
+  </div>
+  <div class="panel tbl-box"><table class="tbl" id="t-cost"></table></div>
+  <div class="cost-grid">
     <div class="panel">
       <div class="panel-h">
         <p class="panel-t"><span class="dot" aria-hidden="true"></span><span id="chart-title"></span></p>
-        <div class="legend" id="legend"></div>
       </div>
       <div class="chart-body"><div id="chart"></div></div>
     </div>
-    <div class="panel insights"><ol id="points"></ol></div>
+    <div class="panel insights"><ol id="cost-points"></ol></div>
   </div>
-  <div class="panel tbl-box pb-table"><table class="tbl" id="t-payback"></table></div>
-  <p class="foot" data-bind="payback.foot"></p>
+  <p class="foot" data-bind="cost.foot"></p>
 </section>
 
 <section class="wrap" id="billing">
@@ -452,21 +510,22 @@
 
   MP.bind();
 
-  // 히어로 제목: 기기 가격만 빛나게
-  var title = C.hero.title, k = title.indexOf(V.unitNew), h1 = $('hero-title');
+  // 히어로 제목: 기준 대수 장비 대금만 빛나게
+  var title = C.hero.title, k = title.indexOf(V.equipNew10), h1 = $('hero-title');
   if (k >= 0) {
     h1.appendChild(document.createTextNode(title.slice(0, k)));
-    var hl = document.createElement('span'); hl.className = 'hl num'; hl.textContent = V.unitNew; h1.appendChild(hl);
-    h1.appendChild(document.createTextNode(title.slice(k + V.unitNew.length)));
+    var hl = document.createElement('span'); hl.className = 'hl num'; hl.textContent = V.equipNew10; h1.appendChild(hl);
+    h1.appendChild(document.createTextNode(title.slice(k + V.equipNew10.length)));
   } else h1.textContent = title;
 
-  // 히어로 총 창업 비용 막대 (8대 기준)
-  var s8 = MP.store(MP.BASE_UNITS, 3);
+  // 히어로 장비 대금 막대 (기준 대수)
+  var d = MP.discount(MP.P.baseUnits);
+  $('hero-num-l').textContent = C.stats[0].label;
   $('hero-bars').innerHTML = [
-    { l: '일시불', v: V.capexLegacy8, w: 1, c: 'old' },
-    { l: '파트너스', v: V.capexNew8, w: s8.capexNew / s8.capexLegacy, c: 'new' }
+    { l: '일시불', v: V.equipLegacy10, w: 1, c: 'old' },
+    { l: '파트너스', v: V.equipNew10, w: d.partners / d.legacy, c: 'new' }
   ].map(function (b) {
-    return '<div class="mbar"><div class="mbar-top"><span>' + b.l + '</span><b class="num">' + b.v + '</b></div>' +
+    return '<div class="mbar"><div class="mbar-top"><span>' + b.l + '</span><b class="num">' + esc(b.v) + '</b></div>' +
       '<div class="mbar-track"><div class="mbar-fill ' + b.c + '" style="width:' + (b.w * 100).toFixed(2) + '%"></div></div></div>';
   }).join('');
 
@@ -474,46 +533,56 @@
     return '<div class="panel stat"><span class="stat-l">' + esc(s.label) + '</span><b class="stat-v num">' + esc(s.value) + '</b><span class="stat-n">' + esc(s.note) + '</span></div>';
   }).join('');
 
-  table($('t-compare'), C.compare.headers, T.compare, { cols: [null, null, 'c-new', 'c-diff'], key: T.compare.map(function (r, i) { return r[0] === C.stats[0].label.replace(/^\S+\s/, '') ? i : -1; }) });
+  table($('t-compare'), C.compare.headers, T.compare, { cols: [null, null, 'c-new', 'c-diff'],
+    key: T.compare.map(function (r, i) { return r[0] === C.stats[0].label ? i : -1; }) });
 
-  // 회수 기간 차트
-  $('chart-title').textContent = C.payback.headers[3].replace(/\s*\(.*\)/, '');
-  $('legend').innerHTML = '<span><i class="lg-old"></i>일시불</span><span><i class="lg-new"></i>파트너스</span>';
+  // 주제 2: 두 큰 패널
+  function side(o, cls) {
+    return '<div class="panel vs-side ' + cls + '"><span class="vs-tag">' + esc(o.tag) + '</span>' +
+      '<div class="vs-k">' + esc(o.priceNote) + '</div><div class="vs-big num">' + esc(o.price) + '</div>' +
+      '<div class="vs-div" aria-hidden="true"></div>' +
+      '<div class="vs-k">' + esc(o.feeTitle) + '</div><div class="vs-big vs-fee num">' + esc(o.fee) + '</div>' +
+      '<div class="vs-note">' + esc(o.feeNote) + '</div></div>';
+  }
+  $('vs-box').innerHTML = side(C.vs.legacy, 'vs-legacy') + '<div class="vs-mid"><span>' + esc(C.vs.mid) + '</span></div>' + side(C.vs.partners, 'vs-partners');
+  $('vs-points').innerHTML = C.vs.points.map(function (p) { return '<li class="panel"><span>' + esc(p) + '</span></li>'; }).join('');
+
+  // 누적 비용 표
+  table($('t-cost'), C.cost.headers, T.cost.map(function (r) {
+    return [r.turns + '회전', r.feePartnersText, r.feeLegacyText, r.diff3Text, r.diff5Text, r.crossText];
+  }), { cols: [null, 'c-new', null, null, null, 'c-diff'] });
+
+  // 교차 기간 차트: 파트너스 누적 비용이 더 적은 기간 (TABLES.cost[].cross, 개월 값을 년 눈금으로 그림)
+  $('chart-title').textContent = C.cost.headers[5];
   function drawChart() {
     var box = $('chart'), W = Math.max(280, Math.floor(box.clientWidth));
     var narrow = W < 520;
-    var rows = T.payback;
-    var maxV = Math.max.apply(null, rows.map(function (r) { return r.bepLegacy; }));
-    var raw = maxV / 4, step = [1, 2, 3, 5, 6, 10, 12, 20].filter(function (s) { return s >= raw; })[0] || raw;
-    var axisMax = Math.ceil(maxV / step) * step;
-    var labW = narrow ? 76 : 100, valW = narrow ? 92 : 112;
+    var rows = T.cost;
+    var maxY = Math.max.apply(null, rows.map(function (r) { return r.cross; })) / 12;
+    var raw = maxY / 4, step = [1, 2, 3, 5, 10].filter(function (x) { return x >= raw; })[0] || raw;
+    var axisMax = Math.ceil(maxY / step) * step;
+    var labW = narrow ? 64 : 84, valW = narrow ? 104 : 120;
     var plotX = labW, plotW = W - labW - valW;
-    var barH = narrow ? 28 : 32, gapB = 10, headH = 38, groupGap = narrow ? 22 : 28, top = 4;
-    var groupH = headH + barH * 2 + gapB;
-    var plotBottom = top + rows.length * groupH + (rows.length - 1) * groupGap + 10;
+    var barH = narrow ? 34 : 40, gap = narrow ? 22 : 28, top = 6;
+    var plotBottom = top + rows.length * barH + (rows.length - 1) * gap + 8;
     var H = plotBottom + 34;
-    var x = function (v) { return plotX + v / axisMax * plotW; };
+    var x = function (years) { return plotX + years / axisMax * plotW; };
     var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" role="img" aria-labelledby="chart-desc">';
-    s += '<desc id="chart-desc">' + rows.map(function (r) { return r.turns + '회전 일시불 ' + F.months(r.bepLegacy) + ', 파트너스 ' + F.months(r.bepNew); }).join(', ') + '</desc>';
+    s += '<desc id="chart-desc">' + esc(C.cost.headers[5]) + ': ' + rows.map(function (r) { return r.turns + '회전 ' + r.crossText; }).join(', ') + '</desc>';
     s += '<defs><linearGradient id="gNew" x1="0" x2="1"><stop offset="0" stop-color="#10B981"/><stop offset="1" stop-color="#67E8F9"/></linearGradient>' +
       '<filter id="gl" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>';
-    s += '<text x="0" y="' + (plotBottom + 24) + '" fill="#C9D4E3" font-size="15" font-weight="700">개월</text>';
-    // 눈금
+    s += '<text x="0" y="' + (plotBottom + 24) + '" fill="#C9D4E3" font-size="15" font-weight="700">년</text>';
     for (var t = 0; t <= axisMax + 1e-9; t += step) {
       var gx = x(t);
       s += '<line x1="' + gx + '" x2="' + gx + '" y1="' + top + '" y2="' + plotBottom + '" stroke="rgba(186,214,255,' + (t === 0 ? '.45' : '.13') + '" stroke-dasharray="' + (t === 0 ? '0' : '4 5') + '"/>';
       s += '<text x="' + gx + '" y="' + (plotBottom + 24) + '" text-anchor="middle" fill="#C9D4E3" font-size="15" font-weight="600">' + t + '</text>';
     }
     rows.forEach(function (r, i) {
-      var y = top + i * (groupH + groupGap);
-      s += '<text x="0" y="' + (y + 24) + '" fill="#F2F6FB" font-size="' + (narrow ? 18 : 19) + '" font-weight="800">' + r.turns + '회전</text>';
-      s += '<text x="' + W + '" y="' + (y + 24) + '" text-anchor="end" fill="#67E8F9" font-size="16" font-weight="800">차이 ' + V['bepGain' + r.turns] + '</text>';
-      [{ l: '일시불', v: r.bepLegacy, fill: '#8FA0BA', tc: '#E3EAF3' }, { l: '파트너스', v: r.bepNew, fill: 'url(#gNew)', tc: '#6EE7B7', glow: true }].forEach(function (b, j) {
-        var by = y + headH + j * (barH + gapB), bw = Math.max(2, x(b.v) - plotX);
-        s += '<text x="0" y="' + (by + barH / 2 + 6) + '" fill="#D3DDEA" font-size="16" font-weight="700">' + b.l + '</text>';
-        s += '<rect x="' + plotX + '" y="' + by + '" width="' + bw + '" height="' + barH + '" rx="7" fill="' + b.fill + '"' + (b.glow ? ' filter="url(#gl)"' : '') + '/>';
-        s += '<text x="' + (plotX + bw + 10) + '" y="' + (by + barH / 2 + 6) + '" fill="' + b.tc + '" font-size="' + (narrow ? 16 : 17) + '" font-weight="800">' + F.months(b.v) + '</text>';
-      });
+      var by = top + i * (barH + gap), bw = Math.max(2, x(r.cross / 12) - plotX), cy = by + barH / 2 + 6;
+      s += '<text x="0" y="' + cy + '" fill="#F2F6FB" font-size="' + (narrow ? 17 : 18) + '" font-weight="800">' + r.turns + '회전</text>';
+      s += '<rect x="' + plotX + '" y="' + by + '" width="' + plotW + '" height="' + barH + '" rx="8" fill="rgba(186,214,255,.06)"/>';
+      s += '<rect x="' + plotX + '" y="' + by + '" width="' + bw + '" height="' + barH + '" rx="8" fill="url(#gNew)" filter="url(#gl)"/>';
+      s += '<text x="' + (plotX + bw + 10) + '" y="' + cy + '" fill="#6EE7B7" font-size="' + (narrow ? 17 : 18) + '" font-weight="800">' + esc(r.crossText) + '</text>';
     });
     s += '</svg>';
     box.innerHTML = s;
@@ -521,14 +590,11 @@
   drawChart();
   var rz; window.addEventListener('resize', function () { cancelAnimationFrame(rz); rz = requestAnimationFrame(drawChart); });
 
-  $('points').innerHTML = C.payback.points.map(function (p, i) { return '<li><span class="ix num" aria-hidden="true"></span><span>' + esc(p) + '</span></li>'; }).join('');
-
-  // 회수 기간 표: 월 순수익과 연 수익률을 두 방식 모두 보인다
-  var H = C.payback.headers, base = function (x) { return x.replace(/\s*\(.*\)/, ''); };
-  var pbHead = [H[0], H[1], base(H[2]) + ' (파트너스)', base(H[2]) + ' (일시불)', H[3], H[4], H[5], base(H[5]) + ' (일시불)'];
-  table($('t-payback'), pbHead, T.payback.map(function (r) {
-    return [r.turns + '회전', F.man(r.revenue), F.man(r.profitNew), F.man(r.profitLegacy), F.months(r.bepNew), F.months(r.bepLegacy), F.pct(r.roiNew), F.pct(r.roiLegacy)];
-  }), { cols: [null, null, 'c-new', null, 'c-new', null, 'c-new', null] });
+  // 마지막 문장(기간이 지나면 기존 방식이 더 적어짐)은 흐리지 않고 따로 강조한다
+  var cp = C.cost.points;
+  $('cost-points').innerHTML = cp.map(function (p, i) {
+    return '<li' + '' + '><span class="ix num" aria-hidden="true"></span><span>' + esc(p) + '</span></li>';
+  }).join('');
 
   $('billing-items').innerHTML = C.billing.items.map(function (it, i) {
     return '<article class="panel bill' + (i === 0 ? ' bill--zero' : '') + '"><div class="bill-top"><span class="bill-ix num" aria-hidden="true">' + (i + 1) + '</span><span class="bill-line" aria-hidden="true"></span></div>' +
@@ -542,11 +608,11 @@
 
   table($('t-limited'), C.limited.headers, C.limited.rows, { cols: [null, 'c-new', null] });
   $('examples').innerHTML = [8, 10, 20].map(function (n) {
-    var d = MP.discount(n);
+    var dd = MP.discount(n);
     return '<div class="panel ex"><div class="ex-top"><span class="ex-n">' + n + '대 구매</span><span class="ex-tag">할인</span></div>' +
-      '<div class="ex-v num">' + F.man(d.saveVsAfter) + '</div>' +
-      '<dl><div><dt>' + MP.UI.rowAfter + '</dt><dd class="num">' + F.eok(d.after) + '</dd></div>' +
-      '<div><dt>' + MP.UI.rowPartners + '</dt><dd class="num" style="color:var(--em)">' + F.eok(d.partners) + '</dd></div></dl></div>';
+      '<div class="ex-v num">' + F.man(dd.saveVsAfter) + '</div>' +
+      '<dl><div><dt>' + MP.UI.rowAfter + '</dt><dd class="num">' + F.eok(dd.after) + '</dd></div>' +
+      '<div><dt>' + MP.UI.rowPartners + '</dt><dd class="num" style="color:var(--em)">' + F.eok(dd.partners) + '</dd></div></dl></div>';
   }).join('');
 
   list($('basis-items'), C.basis.items);
