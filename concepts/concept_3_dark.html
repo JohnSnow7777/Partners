@@ -344,6 +344,9 @@
   .intro-legacy{margin-top:16px;padding:18px 22px;font-size:1.05rem;line-height:1.7}
   @media (max-width:1000px){.intro-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media (max-width:560px){.intro-grid{grid-template-columns:minmax(0,1fr)}}
+  .intro-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .mk-v{display:block;font-size:clamp(2rem,3.4vw,2.8rem);font-weight:800;line-height:1.15;color:#6EE7B7;letter-spacing:-.02em}
+  @media (max-width:900px){.intro-grid.three{grid-template-columns:minmax(0,1fr)}}
 </style>
 <meta name="description" content="스크린 파크골프 파트너스 창업 프로그램. 10대 기준 장비 대금 9,900만원, 기기 1대 990만원, 월 기기당 고정비 0원. 선착순 200대 한정 모집.">
 <meta name="theme-color" content="#0F7A5C">
@@ -386,6 +389,16 @@
     </div>
   </div>
   <div class="stats" id="stats"></div>
+</section>
+
+<section class="wrap" id="market">
+  <div class="sec-head">
+    <div class="eyebrow">파크골프 현황</div>
+    <h2 data-bind="market.title"></h2>
+    <p class="lead" data-bind="market.lead"></p>
+  </div>
+  <div class="intro-grid three" id="market-items"></div>
+  <p class="foot" data-bind="market.source"></p>
 </section>
 
 <section class="wrap" id="intro">
@@ -553,6 +566,7 @@
   $('vs-box').innerHTML = side(C.vs.legacy, 'vs-legacy') + '<div class="vs-mid"><span>' + esc(C.vs.mid) + '</span></div>' + side(C.vs.partners, 'vs-partners');
   $('vs-points').innerHTML = C.vs.points.map(function (p) { return '<li class="panel"><span>' + esc(p) + '</span></li>'; }).join('');
 
+  $('market-items').innerHTML = C.market.items.map(function (it) { return '<div class="panel intro-card"><span class="mk-v num">' + esc(it.value).replace(/ /g, ' ') + '</span><h3>' + esc(it.label) + '</h3><p>' + esc(it.body) + '</p></div>'; }).join('');
   $('intro-items').innerHTML = C.intro.items.map(function (it, i) { return '<div class="panel intro-card"><span class="ix num" aria-hidden="true">' + (i + 1) + '</span><h3>' + esc(it.title) + '</h3><p>' + esc(it.body) + '</p></div>'; }).join('');
   $('billing-items').innerHTML = C.billing.items.map(function (it, i) {
     return '<article class="panel bill' + (i === 0 ? ' bill--zero' : '') + '"><div class="bill-top"><span class="bill-ix num" aria-hidden="true">' + (i + 1) + '</span><span class="bill-line" aria-hidden="true"></span></div>' +
