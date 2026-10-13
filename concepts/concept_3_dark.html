@@ -336,6 +336,14 @@
     html{scroll-behavior:auto}
     *,*::before,*::after{animation:none!important;transition:none!important}
   }
+  .intro-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+  .intro-card{padding:22px 20px;display:grid;gap:8px;align-content:start}
+  .intro-card .ix{width:34px;height:34px;border-radius:10px;background:rgba(16,185,129,.18);color:#6EE7B7;display:grid;place-items:center;font-weight:800}
+  .intro-card h3{margin:0;font-size:1.2rem;line-height:1.35;color:#F2F6FB}
+  .intro-card p{margin:0;color:var(--fg2);font-size:1.02rem;line-height:1.65}
+  .intro-legacy{margin-top:16px;padding:18px 22px;font-size:1.05rem;line-height:1.7}
+  @media (max-width:1000px){.intro-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:560px){.intro-grid{grid-template-columns:minmax(0,1fr)}}
 </style>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%230F7A5C'/%3E%3C/svg%3E">
 </head>
@@ -373,6 +381,16 @@
   <div class="stats" id="stats"></div>
 </section>
 
+<section class="wrap" id="intro">
+  <div class="sec-head">
+    <div class="eyebrow">파트너스란</div>
+    <h2 data-bind="intro.title"></h2>
+    <p class="lead" data-bind="intro.lead"></p>
+  </div>
+  <div class="intro-grid" id="intro-items"></div>
+  <div class="panel intro-legacy"><span data-bind="intro.legacy"></span></div>
+</section>
+
 <section class="wrap" id="compare">
   <div class="sec-head">
     <div class="eyebrow">장비 대금</div>
@@ -392,25 +410,6 @@
   </div>
   <div class="vs-wrap" id="vs-box"></div>
   <ol class="vs-points" id="vs-points"></ol>
-</section>
-
-<section class="wrap" id="cost">
-  <div class="sec-head">
-    <div class="eyebrow">누적 비용</div>
-    <h2 data-bind="cost.title"></h2>
-    <p class="lead" data-bind="cost.lead"></p>
-  </div>
-  <div class="panel tbl-box"><table class="tbl" id="t-cost"></table></div>
-  <div class="cost-grid">
-    <div class="panel">
-      <div class="panel-h">
-        <p class="panel-t"><span class="dot" aria-hidden="true"></span><span id="chart-title"></span></p>
-      </div>
-      <div class="chart-body"><div id="chart"></div></div>
-    </div>
-    <div class="panel insights"><ol id="cost-points"></ol></div>
-  </div>
-  <p class="foot" data-bind="cost.foot"></p>
 </section>
 
 <section class="wrap" id="billing">
@@ -547,55 +546,7 @@
   $('vs-box').innerHTML = side(C.vs.legacy, 'vs-legacy') + '<div class="vs-mid"><span>' + esc(C.vs.mid) + '</span></div>' + side(C.vs.partners, 'vs-partners');
   $('vs-points').innerHTML = C.vs.points.map(function (p) { return '<li class="panel"><span>' + esc(p) + '</span></li>'; }).join('');
 
-  // 누적 비용 표
-  table($('t-cost'), C.cost.headers, T.cost.map(function (r) {
-    return [r.turns + '회전', r.feePartnersText, r.feeLegacyText, r.diff3Text, r.diff5Text, r.crossText];
-  }), { cols: [null, 'c-new', null, null, null, 'c-diff'] });
-
-  // 교차 기간 차트: 파트너스 누적 비용이 더 적은 기간 (TABLES.cost[].cross, 개월 값을 년 눈금으로 그림)
-  $('chart-title').textContent = C.cost.headers[5];
-  function drawChart() {
-    var box = $('chart'), W = Math.max(280, Math.floor(box.clientWidth));
-    var narrow = W < 520;
-    var rows = T.cost;
-    var maxY = Math.max.apply(null, rows.map(function (r) { return r.cross; })) / 12;
-    var raw = maxY / 4, step = [1, 2, 3, 5, 10].filter(function (x) { return x >= raw; })[0] || raw;
-    var axisMax = Math.ceil(maxY / step) * step;
-    var labW = narrow ? 64 : 84, valW = narrow ? 104 : 120;
-    var plotX = labW, plotW = W - labW - valW;
-    var barH = narrow ? 34 : 40, gap = narrow ? 22 : 28, top = 6;
-    var plotBottom = top + rows.length * barH + (rows.length - 1) * gap + 8;
-    var H = plotBottom + 34;
-    var x = function (years) { return plotX + years / axisMax * plotW; };
-    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" role="img" aria-labelledby="chart-desc">';
-    s += '<desc id="chart-desc">' + esc(C.cost.headers[5]) + ': ' + rows.map(function (r) { return r.turns + '회전 ' + r.crossText; }).join(', ') + '</desc>';
-    s += '<defs><linearGradient id="gNew" x1="0" x2="1"><stop offset="0" stop-color="#10B981"/><stop offset="1" stop-color="#67E8F9"/></linearGradient>' +
-      '<filter id="gl" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>';
-    s += '<text x="0" y="' + (plotBottom + 24) + '" fill="#C9D4E3" font-size="15" font-weight="700">년</text>';
-    for (var t = 0; t <= axisMax + 1e-9; t += step) {
-      var gx = x(t);
-      s += '<line x1="' + gx + '" x2="' + gx + '" y1="' + top + '" y2="' + plotBottom + '" stroke="rgba(186,214,255,' + (t === 0 ? '.45' : '.13') + '" stroke-dasharray="' + (t === 0 ? '0' : '4 5') + '"/>';
-      s += '<text x="' + gx + '" y="' + (plotBottom + 24) + '" text-anchor="middle" fill="#C9D4E3" font-size="15" font-weight="600">' + t + '</text>';
-    }
-    rows.forEach(function (r, i) {
-      var by = top + i * (barH + gap), bw = Math.max(2, x(r.cross / 12) - plotX), cy = by + barH / 2 + 6;
-      s += '<text x="0" y="' + cy + '" fill="#F2F6FB" font-size="' + (narrow ? 17 : 18) + '" font-weight="800">' + r.turns + '회전</text>';
-      s += '<rect x="' + plotX + '" y="' + by + '" width="' + plotW + '" height="' + barH + '" rx="8" fill="rgba(186,214,255,.06)"/>';
-      s += '<rect x="' + plotX + '" y="' + by + '" width="' + bw + '" height="' + barH + '" rx="8" fill="url(#gNew)" filter="url(#gl)"/>';
-      s += '<text x="' + (plotX + bw + 10) + '" y="' + cy + '" fill="#6EE7B7" font-size="' + (narrow ? 17 : 18) + '" font-weight="800">' + esc(r.crossText) + '</text>';
-    });
-    s += '</svg>';
-    box.innerHTML = s;
-  }
-  drawChart();
-  var rz; window.addEventListener('resize', function () { cancelAnimationFrame(rz); rz = requestAnimationFrame(drawChart); });
-
-  // 마지막 문장(기간이 지나면 기존 방식이 더 적어짐)은 흐리지 않고 따로 강조한다
-  var cp = C.cost.points;
-  $('cost-points').innerHTML = cp.map(function (p, i) {
-    return '<li' + '' + '><span class="ix num" aria-hidden="true"></span><span>' + esc(p) + '</span></li>';
-  }).join('');
-
+  $('intro-items').innerHTML = C.intro.items.map(function (it, i) { return '<div class="panel intro-card"><span class="ix num" aria-hidden="true">' + (i + 1) + '</span><h3>' + esc(it.title) + '</h3><p>' + esc(it.body) + '</p></div>'; }).join('');
   $('billing-items').innerHTML = C.billing.items.map(function (it, i) {
     return '<article class="panel bill' + (i === 0 ? ' bill--zero' : '') + '"><div class="bill-top"><span class="bill-ix num" aria-hidden="true">' + (i + 1) + '</span><span class="bill-line" aria-hidden="true"></span></div>' +
       '<h3 class="bill-t">' + esc(it.title) + '</h3><p class="bill-b">' + esc(it.body) + '</p></article>';

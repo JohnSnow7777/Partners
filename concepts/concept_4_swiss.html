@@ -265,6 +265,8 @@
     #mp-calc .mpc__chip{min-width:0}
     #mp-calc .mpc__seg-btn{font-size:17px}
   }
+  .intro-legacy{margin-top:clamp(20px,3vw,32px);padding-top:18px;border-top:4px solid var(--ink);font-size:clamp(19px,1.8vw,22px);font-weight:700;line-height:1.6}
+  .points li b{font-weight:800}
 </style>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%230F7A5C'/%3E%3C/svg%3E">
 </head>
@@ -298,9 +300,18 @@
   <div class="g stats" id="stats"></div>
 </section>
 
-<section class="sec wrap" id="compare" aria-labelledby="h-compare">
+<section class="sec wrap" id="intro" aria-labelledby="h-intro">
   <div class="g sec__head">
     <p class="sec__no" aria-hidden="true">01</p>
+    <div class="sec__title"><h2 id="h-intro" data-bind="intro.title"></h2><p class="lead" data-bind="intro.lead"></p></div>
+  </div>
+  <div class="g"><ol class="points body9" id="intro-points"></ol></div>
+  <div class="g"><p class="intro-legacy body9" data-bind="intro.legacy"></p></div>
+</section>
+
+<section class="sec wrap" id="compare" aria-labelledby="h-compare">
+  <div class="g sec__head">
+    <p class="sec__no" aria-hidden="true">02</p>
     <div class="sec__title"><h2 id="h-compare" data-bind="compare.title"></h2><p class="lead" data-bind="compare.lead"></p></div>
   </div>
   <div class="g"><div class="body9"><table id="t-compare"></table></div></div>
@@ -313,25 +324,11 @@
 
 <section class="sec wrap" id="vs" aria-labelledby="h-vs">
   <div class="g sec__head">
-    <p class="sec__no" aria-hidden="true">02</p>
+    <p class="sec__no" aria-hidden="true">03</p>
     <div class="sec__title"><h2 id="h-vs" data-bind="vs.title"></h2><p class="lead" data-bind="vs.lead"></p></div>
   </div>
   <div class="vs" id="vs-box"></div>
   <div class="g"><ol class="vs-points body9" id="vs-points"></ol></div>
-</section>
-
-<section class="sec wrap" id="cost" aria-labelledby="h-cost">
-  <div class="g sec__head">
-    <p class="sec__no" aria-hidden="true">03</p>
-    <div class="sec__title"><h2 id="h-cost" data-bind="cost.title"></h2><p class="lead" data-bind="cost.lead"></p></div>
-  </div>
-  <div class="cross">
-    <h3 id="cross-title"></h3>
-    <div id="cross-bars"></div>
-  </div>
-  <div class="g"><ol class="points body9" id="cost-points"></ol></div>
-  <div class="cost-table"><table id="t-cost"></table></div>
-  <div class="g"><p class="foot body9" data-bind="cost.foot"></p></div>
 </section>
 
 <section class="sec wrap" id="billing" aria-labelledby="h-billing">
@@ -452,18 +449,7 @@
   $('vs-box').innerHTML = side(C.vs.legacy, 'l') + '<p class="vs__mid">' + C.vs.mid + '</p>' + side(C.vs.partners, 'p');
   list($('vs-points'), C.vs.points);
 
-  // 누적 비용이 더 적은 기간: 회전별 굵은 막대
-  $('cross-title').textContent = C.cost.headers[5];
-  var cmax = Math.max.apply(null, T.cost.map(function (r) { return r.cross; }));
-  $('cross-bars').innerHTML = T.cost.map(function (r) {
-    return '<div class="cr"><p class="cr__t">' + r.turns + '<span>회전</span></p><div class="cr__track">' +
-      '<i class="cr__bar" style="--w:' + (r.cross / cmax).toFixed(4) + '"></i><span class="cr__val">' + r.crossText + '</span></div></div>';
-  }).join('');
-  list($('cost-points'), C.cost.points);
-  table($('t-cost'), C.cost.headers, T.cost.map(function (r) {
-    return [r.turns + '회전', r.feePartnersText, r.feeLegacyText, r.diff3Text, r.diff5Text, r.crossText];
-  }), [], null, [5]);
-
+  $('intro-points').innerHTML = C.intro.items.map(function (it) { return '<li><span><b>' + it.title + '</b><br>' + it.body + '</span></li>'; }).join('');
   $('bill').innerHTML = C.billing.items.map(function (it, i) {
     return '<li><p class="bill__no" aria-hidden="true">' + (i + 1) + '</p><div><h3 class="bill__title">' + it.title + '</h3><p class="bill__body">' + it.body + '</p></div></li>';
   }).join('');

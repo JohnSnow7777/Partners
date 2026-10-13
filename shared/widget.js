@@ -30,17 +30,7 @@
     rowPartners: '파트너스 가격',
     rowFormula: '{n}대 × {unit}',
     save2: '기존 일시불 방식과 비교하면 {amount} 적게 듭니다 ({pct} 절감)',
-    costTitle: '{n}대, 하루 {t}회전으로 계산하면',
-    turnsLabel: '하루 회전',
-    turnsUnit: '회전',
-    cRows: {
-      feePartners: '파트너스 월 라운드 비용',
-      feeLegacy: '기존 월 고정비 (1년 후부터)',
-      diff3: '3년 누적 비교',
-      diff5: '5년 누적 비교',
-      cross: '파트너스 누적 비용이 더 적은 기간'
-    },
-    noteCost: '월 라운드 비용은 대수 × 하루 회전 × 4인 × 30일 × {royalty}입니다. 장비 대금과 본사에 내는 비용만 비교했고, 자세한 기준은 아래 계산 기준을 참고하세요.',
+    noteBase: '장비 대금 기준 금액입니다.',
     note200: '200대 이후 가격은 예정 단계이며 변경될 수 있습니다.',
     max: 200
   };
@@ -49,7 +39,7 @@
   function clampN(n) { return Math.max(1, Math.min(UI.max, Math.floor(Number(n) || 0) || 1)); }
 
   // 화면에 찍는 문자열을 한 곳에서 만든다 (테스트 대상)
-  MP.calcView = function (n, turns) {
+  MP.calcView = function (n) {
     n = clampN(n);
     var d = MP.discount(n);
     var v = {
@@ -61,25 +51,9 @@
         { key: 'after', label: UI.rowAfter, value: F.eok(d.after), formula: UI.rowFormula.replace('{n}', n).replace('{unit}', MP.V.unitAfter) },
         { key: 'partners', label: UI.rowPartners, value: F.eok(d.partners), formula: UI.rowFormula.replace('{n}', n).replace('{unit}', MP.V.unitNew) }
       ],
-      save2: UI.save2.replace('{amount}', F.eok(d.saveVsLegacy)).replace('{pct}', F.pct(d.pctVsLegacy)),
-      cost: null
+      save2: UI.save2.replace('{amount}', F.eok(d.saveVsLegacy)).replace('{pct}', F.pct(d.pctVsLegacy))
     };
-    var c = turns ? MP.costView(n, turns) : null;
-    if (c) {
-      var S = UI.cRows;
-      v.cost = {
-        turns: turns,
-        title: UI.costTitle.replace('{n}', n).replace('{t}', turns),
-        rows: [
-          { key: 'feePartners', label: S.feePartners, value: F.eok(c.feePartners) },
-          { key: 'feeLegacy', label: S.feeLegacy, value: F.eok(c.feeLegacy) },
-          { key: 'diff3', label: S.diff3, value: F.diffText(c.diff3) },
-          { key: 'diff5', label: S.diff5, value: F.diffText(c.diff5) },
-          { key: 'cross', label: S.cross, value: F.span(c.cross), strong: true }
-        ]
-      };
-    }
-    v.note = UI.noteCost.replace('{royalty}', MP.V.royalty) + ' ' + UI.note200;
+    v.note = UI.noteBase + ' ' + UI.note200;
     return v;
   };
 
@@ -134,7 +108,7 @@
     if (!document.getElementById('mpc-style')) {
       var st = el('style'); st.id = 'mpc-style'; st.textContent = CSS; document.head.appendChild(st);
     }
-    var state = { n: opts.n || MP.P.baseUnits, turns: opts.turns || MP.DEFAULT_TURNS };
+    var state = { n: opts.n || MP.P.baseUnits };
     root.textContent = '';
     var wrap = el('div', 'mpc');
 
@@ -156,7 +130,6 @@
     wrap.appendChild(g1);
 
     var result = el('div', 'mpc__result'); result.setAttribute('aria-live', 'polite'); wrap.appendChild(result);
-    var costBox = el('div', 'mpc__store'); wrap.appendChild(costBox);
     var note = el('p', 'mpc__note'); wrap.appendChild(note);
     root.appendChild(wrap);
 
@@ -174,7 +147,7 @@
     function set(n) { state.n = clampN(n); draw(); }
 
     function draw() {
-      var v = MP.calcView(state.n, state.turns);
+      var v = MP.calcView(state.n);
       chipEls.forEach(function (b, i) {
         var on = UI.chips[i] === state.n;
         b.classList.toggle('mpc__chip--on', on); b.setAttribute('aria-checked', on ? 'true' : 'false');
@@ -188,18 +161,6 @@
       result.appendChild(hero);
       result.appendChild(rows(v.rows));
       result.appendChild(el('div', 'mpc__save2', v.save2));
-      costBox.textContent = '';
-      costBox.appendChild(el('h3', 'mpc__store-title', v.cost.title));
-      costBox.appendChild(el('div', 'mpc__label', UI.turnsLabel));
-      var seg = el('div', 'mpc__seg'); seg.setAttribute('role', 'radiogroup'); seg.setAttribute('aria-label', UI.turnsLabel);
-      MP.TURNS.forEach(function (t) {
-        var b = el('button', 'mpc__seg-btn' + (t === state.turns ? ' mpc__seg-btn--on' : ''), t + UI.turnsUnit);
-        b.type = 'button'; b.setAttribute('role', 'radio'); b.setAttribute('aria-checked', t === state.turns ? 'true' : 'false');
-        b.addEventListener('click', function () { state.turns = t; draw(); });
-        seg.appendChild(b);
-      });
-      costBox.appendChild(seg);
-      costBox.appendChild(rows(v.cost.rows));
       note.textContent = v.note;
     }
 
