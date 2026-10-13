@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>마이파크 파트너스 200 제안 | 벤토 그리드</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  /* 컨셉 2: 벤토 그리드. 밝은 민트 회색 바탕, 에메랄드와 라임 포인트, 큰 둥근 카드 모자이크 */
+  :root{
+    --bg:#EEF4F0; --card:#FFFFFF; --ink:#10231C; --muted:#45584F; --line:#D6E2DB;
+    --em:#0F7A5C; --em-deep:#0B5E47; --em-ink:#08402F;
+    --lime:#C8F26A; --lime-soft:#EDF9D2; --mint:#DCF0E6; --mint-2:#E8F5EE;
+    --r-xl:32px; --r-lg:28px; --r-md:20px;
+    --shadow:0 1px 2px rgba(16,35,28,.05),0 8px 24px rgba(16,35,28,.06);
+    --gap:16px;
+    --font:"Pretendard","Pretendard Variable","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+    --mpc-fg:var(--ink); --mpc-muted:var(--muted); --mpc-card:#fff; --mpc-line:var(--line);
+    --mpc-accent:var(--em); --mpc-accent-fg:#fff; --mpc-hero-bg:var(--em-deep); --mpc-hero-fg:#fff;
+    --mpc-radius:24px; --mpc-font:var(--font); --mpc-num-font:var(--font);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+  body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 var(--font);word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{margin:0;letter-spacing:-.02em;line-height:1.3}
+  p{margin:0}
+  ul{margin:0;padding:0;list-style:none}
+  a{color:inherit}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--em);outline-offset:3px;border-radius:14px}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+  .num{font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+
+  /* 상단 */
+  .top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:20px;padding-bottom:20px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:18px}
+  .mark{width:40px;height:40px;border-radius:14px;background:var(--em);position:relative;flex:none}
+  .mark::before{content:"";position:absolute;width:14px;height:14px;border-radius:50%;background:var(--lime);left:8px;top:8px}
+  .mark::after{content:"";position:absolute;width:16px;height:4px;border-radius:4px;background:#fff;right:7px;bottom:9px}
+
+  /* 버튼 */
+  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 26px;border-radius:999px;font-weight:800;font-size:17px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease;text-align:center;line-height:1.3}
+  .btn:hover{transform:translateY(-1px)}
+  .btn--lime{background:var(--lime);color:var(--ink)}
+  .btn--white{background:#fff;color:var(--em-ink)}
+  .btn--line{background:var(--card);color:var(--em-ink);border:2px solid var(--em);min-height:48px;padding:0 20px}
+  .btn--ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.75)}
+
+  /* 벤토 격자 */
+  .bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap)}
+  .card{position:relative;background:var(--card);border-radius:var(--r-lg);padding:28px;box-shadow:var(--shadow);min-width:0;overflow:hidden;container-type:inline-size}
+  .card--mint{background:var(--mint);box-shadow:none}
+  .card--lime{background:var(--lime);box-shadow:none}
+  .card--limesoft{background:var(--lime-soft);box-shadow:none}
+  .card--em{background:var(--em-deep);color:#fff;box-shadow:0 12px 32px rgba(11,94,71,.22)}
+  .card--plain{background:transparent;box-shadow:none;padding:12px 4px}
+  .s12{grid-column:span 12}.s8{grid-column:span 8}.s7{grid-column:span 7}.s6{grid-column:span 6}.s5{grid-column:span 5}.s4{grid-column:span 4}.s3{grid-column:span 3}
+  .r2{grid-row:span 2}.r3{grid-row:span 3}
+
+  section.wrap{padding-top:44px;padding-bottom:44px}
+  section.hero{padding-top:8px;padding-bottom:20px}
+  .chip{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:15px;color:var(--em-ink);background:var(--lime);border-radius:999px;padding:6px 14px;line-height:1.4}
+  .chip--soft{background:#fff;color:var(--em-ink)}
+  .chip--onem{background:rgba(255,255,255,.14);color:#fff}
+  h2{font-size:clamp(26px,3.2vw,36px);margin-top:14px}
+  .lead{margin-top:14px;color:var(--muted);font-size:18px;line-height:1.75}
+  .foot{color:var(--muted);font-size:16px;line-height:1.7;margin-top:16px}
+  .card--em .foot,.card--em .lead{color:#E3F1EA}
+
+  /* 히어로 */
+  .hero-main{padding:44px 44px 40px;display:flex;flex-direction:column;justify-content:space-between;gap:36px;min-height:520px}
+  .hero-main::after{content:"";position:absolute;right:0;bottom:0;width:300px;height:300px;pointer-events:none;background:radial-gradient(circle at 100% 100%,rgba(200,242,106,.16) 0 110px,transparent 111px 178px,rgba(200,242,106,.35) 179px 181px,transparent 182px 248px,rgba(200,242,106,.22) 249px 251px,transparent 252px)}
+  .hero-main>*,.contact>*{position:relative;z-index:1}
+  .hero-main h1{font-size:clamp(32px,4.6vw,56px);line-height:1.22;letter-spacing:-.035em;max-width:13em;margin-top:22px;position:relative}
+  .hero-main h1 .hl{color:var(--lime)}
+  .hero-sub{margin-top:20px;font-size:19px;line-height:1.75;color:#E6F3EC;max-width:34em;position:relative}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;position:relative}
+  .stat{display:flex;flex-direction:column;justify-content:space-between;gap:10px;padding:26px 28px}
+  .stat__label{font-weight:700;font-size:17px;color:var(--muted)}
+  .stat__value{font-weight:900;font-size:clamp(28px,15cqi,58px);line-height:1.1;letter-spacing:-.04em;color:var(--em-ink)}
+  .stat__note{font-size:16px;color:var(--muted);line-height:1.55}
+  .card--lime .stat__label,.card--lime .stat__note{color:#2E4A1E}
+  .card--lime .stat__value{color:var(--ink)}
+
+  /* 비교 */
+  .save{display:flex;flex-direction:column;gap:22px;justify-content:space-between}
+  .save__label{font-weight:800;font-size:18px;color:#2E4A1E}
+  .save__value{font-weight:900;font-size:clamp(40px,11cqi,76px);line-height:1.05;letter-spacing:-.045em;color:var(--ink)}
+  .cbars{display:grid;gap:12px}
+  .cbar{display:grid;grid-template-columns:76px minmax(0,1fr);align-items:center;gap:12px}
+  .cbar__name{font-weight:800;font-size:16px;color:var(--ink)}
+  .cbar__track{position:relative;height:44px;border-radius:999px;background:rgba(16,35,28,.08)}
+  .cbar__fill{position:absolute;inset:0 auto 0 0;border-radius:999px;display:flex;align-items:center;justify-content:flex-end;padding:0 16px;font-weight:800;font-size:16px;white-space:nowrap}
+  .cbar__fill--old{background:#fff;color:var(--ink)}
+  .cbar__fill--new{background:var(--em-deep);color:#fff}
+
+  /* 표 */
+  .tcard{padding:8px}
+  .tbl{width:100%;border-collapse:separate;border-spacing:0;font-size:17px}
+  .tbl caption{text-align:left;padding:18px 18px 6px;font-weight:800}
+  .tbl th,.tbl td{padding:16px 18px;text-align:left;border-top:1px solid var(--line);vertical-align:middle}
+  .tbl thead th{border-top:0;font-size:15px;font-weight:800;color:var(--muted);background:var(--mint-2);line-height:1.45}
+  .tbl thead th:first-child{border-radius:20px 0 0 20px}
+  .tbl thead th:last-child{border-radius:0 20px 20px 0}
+  .tbl tbody tr:first-child th,.tbl tbody tr:first-child td{border-top:0}
+  .tbl tbody th{font-weight:700}
+  .tbl td{font-weight:700;font-variant-numeric:tabular-nums}
+  .tbl .hi{background:var(--lime-soft);color:var(--ink);font-weight:900}
+  .tbl .em{color:var(--em-ink);font-weight:900}
+  .tbl tr.key th,.tbl tr.key td{font-size:19px}
+  .tbl-foot{padding:4px 18px 16px}
+
+  /* 회수 기간 차트 */
+  .chart{display:grid;gap:26px}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;font-weight:700;font-size:16px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:8px}
+  .legend i{width:18px;height:18px;border-radius:6px;display:inline-block}
+  .pb{display:grid;gap:10px}
+  .pb__turn{font-weight:900;font-size:19px}
+  .pb__row{display:grid;grid-template-columns:72px minmax(0,1fr) 96px;align-items:center;gap:12px}
+  .pb__name{font-weight:700;font-size:16px;color:var(--muted)}
+  .pb__track{height:30px;border-radius:999px;background:var(--mint-2);overflow:hidden}
+  .pb__fill{display:block;height:100%;border-radius:999px}
+  .old{background:#9DB3A8}
+  .new{background:var(--em)}
+  .pb__val{font-weight:900;font-size:18px;text-align:right;font-variant-numeric:tabular-nums}
+  .pb__row--new .pb__val{color:var(--em-ink)}
+  .points{display:grid;gap:14px;margin-top:4px;counter-reset:pt}
+  .points li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;align-items:start;font-size:17px;line-height:1.7}
+  .points li{counter-increment:pt}.points b::before{content:counter(pt)}.points b{width:40px;height:40px;border-radius:14px;background:#fff;color:var(--em-ink);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:17px}
+  .points li:last-child{background:#fff;border-radius:18px;padding:14px;margin:0 -14px}
+  .points li:last-child b{background:var(--lime)}
+
+  /* 상생 구조 */
+  .head2{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:28px;align-items:end}
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap);grid-column:1 / -1}
+  .step{display:flex;flex-direction:column;gap:12px;overflow:visible}
+  .step__no{display:inline-flex;align-self:flex-start;font-weight:900;font-size:15px;border-radius:999px;padding:5px 14px;background:var(--mint);color:var(--em-ink)}
+  .step h3{font-size:22px}
+  .step p{color:var(--muted);font-size:17px}
+  .step.card--lime p{color:#2E4A1E}
+  .step.card--lime .step__no{background:#fff}
+  .step.card--em p{color:#E3F1EA}
+  .step.card--em .step__no{background:var(--lime);color:var(--ink)}
+  .step:not(:last-child)::after{content:"";position:absolute;top:50%;right:calc(var(--gap) * -1 - 2px);width:calc(var(--gap) + 4px);height:8px;margin-top:-4px;background:var(--em);border-radius:8px;z-index:2}
+  .step:not(:last-child)::before{content:"";position:absolute;top:50%;right:-8px;width:16px;height:16px;margin-top:-8px;border-radius:50%;background:var(--lime);border:4px solid var(--em);z-index:3;box-sizing:border-box}
+  .steps .card{overflow:visible}
+  .box h3{font-size:22px}
+  .ticks{display:grid;gap:12px;margin-top:18px}
+  .ticks li{position:relative;padding-left:30px;font-size:17px;line-height:1.7}
+  .ticks li::before{content:"";position:absolute;left:0;top:7px;width:18px;height:18px;border-radius:7px;background:var(--lime);box-shadow:inset 0 0 0 5px var(--em)}
+  .owner-wrap{display:grid;grid-template-columns:minmax(0,1fr) 168px;gap:24px;align-items:center}
+  .donut{position:relative;width:168px;height:168px}
+  .donut svg{width:100%;height:100%;transform:rotate(-90deg)}
+  .donut__c{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:26px;color:var(--em-ink)}
+  .dlegend{display:grid;gap:6px;margin-top:12px;font-size:16px;font-weight:700}
+  .dlegend span{display:flex;align-items:center;gap:8px}
+  .dlegend i{width:16px;height:16px;border-radius:5px;display:inline-block;flex:none}
+  .pills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
+  .pills li{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:16px 18px;font-weight:700;font-size:17px;line-height:1.5;display:flex;align-items:center;min-height:64px}
+  .trust{display:flex;flex-direction:column;justify-content:center;gap:16px}
+  .trust p{font-size:19px;font-weight:700;line-height:1.7;color:var(--ink)}
+  .trust .bigmark{width:56px;height:56px;border-radius:18px;background:var(--em);position:relative}
+  .trust .bigmark::before{content:"";position:absolute;inset:14px;border-radius:50%;border:5px solid var(--lime)}
+
+  /* 과금 방식 */
+  #bill0 .bill__no::before{content:"1"}#bill1 .bill__no::before{content:"2"}#bill2 .bill__no::before{content:"3"}#bill3 .bill__no::before{content:"4"}.bill{display:flex;flex-direction:column;gap:12px}
+  .bill__no{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:14px;background:var(--mint);color:var(--em-ink);font-weight:900;font-size:18px}
+  .card--mint .bill__no{background:#fff}
+  .card--lime .bill__no{background:#fff}
+  .card--em .bill__no{background:var(--lime);color:var(--ink)}
+  .bill__big{font-weight:900;font-size:clamp(34px,13cqi,56px);line-height:1.1;letter-spacing:-.04em;color:var(--em-ink);margin-top:6px}
+  .bill--main .bill__big{font-size:clamp(56px,20cqi,120px);color:var(--ink)}
+  .card--em .bill__big{color:var(--lime)}
+  .bill h3{font-size:22px}
+  .bill p{font-size:17px;line-height:1.7;color:var(--muted)}
+  .card--lime.bill p{color:#2E4A1E}
+  .card--em.bill p{color:#E3F1EA}
+
+  /* 200대 한정 */
+  .ex{display:flex;flex-direction:column;justify-content:space-between;gap:12px;min-height:180px}
+  .ex__n{display:inline-flex;align-self:flex-start;font-weight:900;font-size:16px;background:var(--mint);color:var(--em-ink);border-radius:999px;padding:5px 14px}
+  .ex__v{font-weight:900;font-size:clamp(28px,15cqi,52px);line-height:1.1;letter-spacing:-.04em;color:var(--em-ink)}
+  .ex__s{font-weight:700;color:var(--muted);font-size:16px}
+  .card--lime .ex__n{background:#fff}
+  .card--lime .ex__v{color:var(--ink)}
+  .card--lime .ex__s{color:#2E4A1E}
+  .extitle h3{font-size:22px;line-height:1.45}
+
+  /* 계산기 */
+  .calc-card{padding:36px}
+  .calc-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:end;margin-bottom:28px}
+  #mp-calc .mpc{gap:20px}
+  #mp-calc .mpc__label{font-size:16px;color:var(--muted)}
+  #mp-calc .mpc__chip{min-height:56px;min-width:78px;font-size:18px;border-color:var(--line);background:var(--mint-2)}
+  #mp-calc .mpc__chip:hover{border-color:var(--em)}
+  #mp-calc .mpc__chip--on{background:var(--lime);border-color:var(--em);color:var(--ink)}
+  #mp-calc .mpc__stepper button,#mp-calc .mpc__stepper input{height:56px;border-radius:16px}
+  #mp-calc .mpc__stepper button{width:56px}
+  #mp-calc .mpc__hero{border-radius:24px;padding:26px 28px;gap:6px}
+  #mp-calc .mpc__hero-value{color:var(--lime);font-size:clamp(36px,5vw,60px)}
+  #mp-calc .mpc__hero-label,#mp-calc .mpc__hero-sub{font-size:16px;opacity:1;color:#E3F1EA}
+  #mp-calc .mpc__rows{border-radius:24px;border-color:var(--line)}
+  #mp-calc .mpc__row{padding:16px 20px}
+  #mp-calc .mpc__row small{font-size:16px}
+  #mp-calc .mpc__row--key{background:var(--lime-soft)}
+  #mp-calc .mpc__row--key dd{color:var(--em-ink)}
+  #mp-calc .mpc__save2{background:var(--mint);border-radius:18px;padding:14px 18px;color:var(--em-ink)}
+  #mp-calc .mpc__store{background:var(--mint-2);border:0;border-radius:24px;padding:24px;gap:14px;align-content:start}
+  #mp-calc .mpc__store-title{font-size:22px}
+  #mp-calc .mpc__seg{border-color:var(--line);background:#fff}
+  #mp-calc .mpc__seg-btn{min-height:52px;font-size:17px}
+  #mp-calc .mpc__seg-btn--on{background:var(--em-deep)}
+  #mp-calc .mpc__note{font-size:16px}
+  @media (min-width:1024px){
+    #mp-calc .mpc{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:28px;align-items:start}
+    #mp-calc .mpc__group,#mp-calc .mpc__result{grid-column:1}
+    #mp-calc .mpc__store{grid-column:2;grid-row:1 / span 2}
+    #mp-calc .mpc__note{grid-column:1 / -1}
+  }
+
+  /* 계산 기준 */
+  .basis-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:22px}
+  .basis-list li{background:var(--mint-2);border-radius:18px;padding:16px 18px;font-size:16px;line-height:1.7}
+  .basis-list li:last-child{grid-column:1 / -1}
+  .notice p{font-size:16px;line-height:1.75;color:var(--ink)}
+  .notice{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+  @media (max-width:1023px){.notice{grid-template-columns:1fr;gap:12px}}
+
+  /* 상담 */
+  .contact{padding:48px;display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:32px;align-items:center}
+  .contact h2{font-size:clamp(28px,3.4vw,40px);margin-top:14px}
+  .contact .actions{display:grid;gap:12px}
+  .contact .btn{min-height:64px;font-size:19px;width:100%}
+  .contact::after{content:"";position:absolute;left:0;top:0;width:200px;height:200px;pointer-events:none;background:radial-gradient(circle at 0 0,rgba(200,242,106,.14) 0 100px,transparent 101px 178px,rgba(200,242,106,.3) 179px 181px,transparent 182px)}
+  footer{padding:24px 0 48px;color:var(--muted);font-size:16px;text-align:center}
+
+  /* 태블릿 */
+  @media (max-width:1023px){
+    .bento{grid-template-columns:repeat(6,minmax(0,1fr))}
+    .s12,.s8,.s7,.s6,.s5,.s4,.s3{grid-column:span 6}
+    .t3{grid-column:span 3}.t2{grid-column:span 2}
+    .r2,.r3{grid-row:auto}
+    .hero-main{min-height:0}
+    .head2,.calc-head,.contact{grid-template-columns:1fr}
+    .head2,.calc-head{gap:0}
+    .contact{padding:36px}
+    .stat{padding:22px}
+  }
+  /* 휴대폰 */
+  @media (max-width:639px){
+    :root{--gap:12px}
+    .wrap{padding:0 16px}
+    .bento{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .s12,.s8,.s7,.s6,.s5,.s4,.s3,.t3,.t2{grid-column:span 2}
+    .m1{grid-column:span 1}
+    .card{padding:22px;border-radius:26px}
+    .card--plain{padding:8px 2px}
+    .hero-main{padding:30px 22px 26px;gap:28px}
+    .hero-main::after{width:200px;height:200px;opacity:.8}
+    .hero-sub{font-size:17px}
+    .hero-cta .btn{width:100%}
+    .stat{padding:20px 18px}
+    .stat__label{font-size:16px}
+    .stat__value{font-size:clamp(26px,18cqi,44px)}
+    .ex{min-height:150px;padding:20px 18px}
+    .ex__v{font-size:clamp(24px,17cqi,44px)}
+    section.wrap{padding-top:28px;padding-bottom:28px}
+    section.hero{padding-top:4px;padding-bottom:12px}
+    .lead{font-size:17px}
+    .steps{grid-template-columns:1fr}
+    .step:not(:last-child)::after{top:auto;bottom:calc(var(--gap) * -1 - 2px);right:auto;left:50%;width:8px;height:calc(var(--gap) + 4px);margin:0 0 0 -4px}
+    .step:not(:last-child)::before{top:auto;bottom:-8px;right:auto;left:50%;margin:0 0 0 -8px}
+    .owner-wrap{grid-template-columns:1fr}
+    .donut-box{display:grid;grid-template-columns:132px minmax(0,1fr);gap:18px;align-items:center}
+    .donut{width:132px;height:132px}
+    .donut__c{font-size:22px}
+    .pills{grid-template-columns:1fr}
+    .basis-list{grid-template-columns:1fr}
+    .contact{padding:28px 22px}
+    .calc-card{padding:22px 18px}
+    #mp-calc .mpc__chip{min-width:0;flex:1 1 calc(33.33% - 10px)}
+    #mp-calc .mpc__hero{padding:22px}
+    #mp-calc .mpc__store{padding:18px 10px}
+    #mp-calc .mpc__stepper{display:flex;flex-wrap:wrap;width:100%}
+    #mp-calc .mpc__stepper span.t:first-child{flex-basis:100%}
+    #mp-calc .mpc__stepper input{flex:1 1 auto;width:auto;min-width:0}
+    #mp-calc .mpc__row dt{font-size:16px}
+    #mp-calc .mpc__seg{width:100%}
+    #mp-calc .mpc__seg-btn{flex:1;padding:0 8px}
+    #mp-calc .mpc__row{padding:14px 16px}
+    .cbar{grid-template-columns:64px minmax(0,1fr)}
+    .pb__row{grid-template-columns:62px minmax(0,1fr) 86px;gap:8px}
+    .pb__val{font-size:17px}
+    /* 표를 카드형으로 */
+    .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:auto}
+    .tbl thead{display:none}
+    .tbl tbody{display:grid;gap:10px;padding:6px}
+    .tbl tbody tr{background:var(--mint-2);border-radius:20px;padding:6px 16px 10px}
+    .tbl tbody th{border:0;padding:12px 0 8px;font-size:18px;font-weight:900;color:var(--em-ink)}
+    .tbl td{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:baseline;padding:10px 0;border-top:1px solid var(--line);text-align:right;font-size:17px}
+    .tbl td::before{content:attr(data-label);text-align:left;font-weight:600;color:var(--muted);font-size:16px}
+    .tbl td.hi{background:transparent;color:var(--em-ink)}
+    .tbl tbody tr:first-child td{border-top:1px solid var(--line)}
+    .tbl tr.key th,.tbl tr.key td{font-size:18px}
+    .tbl tr.key{background:var(--lime-soft)}
+    .tcard{padding:6px}
+  }
+</style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%230F7A5C'/%3E%3C/svg%3E">
+</head>
+<body>
+<header class="wrap top">
+  <div class="brand"><span class="mark" aria-hidden="true"></span><span data-bind="brand"></span></div>
+  <a class="btn btn--line" href="#contact" data-bind="hero.ctaSecondary"></a>
+</header>
+
+<main>
+<!-- 히어로: 벤토 격자 자체 -->
+<section class="wrap hero" id="top" aria-labelledby="h-hero">
+  <div class="bento">
+    <div class="card card--em hero-main s8 r3">
+      <div>
+        <span class="chip" data-bind="hero.badge"></span>
+        <h1 id="h-hero"></h1>
+        <p class="hero-sub" data-bind="hero.sub"></p>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn--lime" href="#calc" data-bind="hero.ctaPrimary"></a>
+        <a class="btn btn--ghost" href="#contact" data-bind="hero.ctaSecondary"></a>
+      </div>
+    </div>
+    <div class="card card--lime stat s4" id="stat0"></div>
+    <div class="card stat s4 t3 m1" id="stat1"></div>
+    <div class="card card--mint stat s4 t3 m1" id="stat2"></div>
+  </div>
+</section>
+
+<!-- 같은 조건 비교 -->
+<section class="wrap" id="compare" aria-labelledby="h-compare">
+  <div class="bento">
+    <div class="card card--plain s5">
+      <span class="chip">비교</span>
+      <h2 id="h-compare" data-bind="compare.title"></h2>
+      <p class="lead" data-bind="compare.lead"></p>
+    </div>
+    <div class="card card--lime save s7">
+      <div>
+        <div class="save__label" data-bind="compare.saveLabel"></div>
+        <div class="save__value num" data-bind="compare.saveValue"></div>
+      </div>
+      <div class="cbars" id="cbars"></div>
+    </div>
+    <div class="card tcard s12">
+      <table class="tbl" id="t-compare"></table>
+      <p class="foot tbl-foot" data-bind="compare.foot"></p>
+    </div>
+  </div>
+</section>
+
+<!-- 회수 기간 -->
+<section class="wrap" id="payback" aria-labelledby="h-payback">
+  <div class="bento">
+    <div class="card card--plain s5">
+      <span class="chip">회수 기간</span>
+      <h2 id="h-payback" data-bind="payback.title"></h2>
+      <p class="lead" data-bind="payback.lead"></p>
+    </div>
+    <div class="card chart s7 r2" id="chart"></div>
+    <div class="card card--mint s5">
+      <ul class="points" id="points"></ul>
+    </div>
+    <div class="card tcard s12">
+      <table class="tbl" id="t-payback"></table>
+      <p class="foot tbl-foot" data-bind="payback.foot"></p>
+    </div>
+  </div>
+</section>
+
+<!-- 과금 방식 -->
+<section class="wrap" id="billing" aria-labelledby="h-billing">
+  <div class="bento">
+    <div class="card card--plain s5">
+      <span class="chip">과금 방식</span>
+      <h2 id="h-billing" data-bind="billing.title"></h2>
+      <p class="lead" data-bind="billing.lead"></p>
+    </div>
+    <div class="card card--lime bill bill--main s7" id="bill0"></div>
+    <div class="card bill s4" id="bill1"></div>
+    <div class="card card--mint bill s4" id="bill2"></div>
+    <div class="card card--em bill s4" id="bill3"></div>
+  </div>
+</section>
+
+<!-- 상생 구조 -->
+<section class="wrap" id="partners" aria-labelledby="h-partners">
+  <div class="bento">
+    <div class="card card--plain s12">
+      <div class="head2">
+        <div>
+          <span class="chip">상생 구조</span>
+          <h2 id="h-partners" data-bind="partnership.title"></h2>
+        </div>
+        <p class="lead" data-bind="partnership.lead"></p>
+      </div>
+    </div>
+    <div class="steps" id="steps"></div>
+    <div class="card box s6" id="owner-card">
+      <h3 data-bind="partnership.owner.title"></h3>
+      <div class="owner-wrap">
+        <ul class="ticks" id="owner"></ul>
+        <div class="donut-box">
+          <div class="donut" role="img" id="donut"></div>
+          <div class="dlegend" id="dlegend"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card box s6">
+      <h3 data-bind="partnership.hq.title"></h3>
+      <ul class="ticks" id="hq"></ul>
+    </div>
+    <div class="card card--em box s8">
+      <h3 data-bind="partnership.support.title"></h3>
+      <ul class="pills" id="support"></ul>
+    </div>
+    <div class="card card--limesoft trust s4">
+      <span class="bigmark" aria-hidden="true"></span>
+      <p data-bind="partnership.trust"></p>
+    </div>
+  </div>
+</section>
+
+<!-- 200대 한정 -->
+<section class="wrap" id="limited" aria-labelledby="h-limited">
+  <div class="bento">
+    <div class="card card--plain s5">
+      <span class="chip" data-v="limit"></span>
+      <h2 id="h-limited" data-bind="limited.title"></h2>
+      <p class="lead" data-bind="limited.lead"></p>
+    </div>
+    <div class="card tcard s7">
+      <table class="tbl" id="t-limited"></table>
+    </div>
+    <div class="card card--mint extitle s3"><h3 data-bind="limited.examplesTitle"></h3></div>
+    <div class="card card--lime ex s3 t2" id="ex0"></div>
+    <div class="card ex s3 t2 m1" id="ex1"></div>
+    <div class="card ex s3 t2 m1" id="ex2"></div>
+    <div class="card card--plain s12"><p class="foot" data-bind="limited.note"></p></div>
+  </div>
+</section>
+
+<!-- 계산기 -->
+<section class="wrap" id="calc" aria-labelledby="h-calc">
+  <div class="bento">
+    <div class="card calc-card s12">
+      <div class="calc-head">
+        <div>
+          <span class="chip">계산기</span>
+          <h2 id="h-calc" data-bind="calc.title"></h2>
+        </div>
+        <p class="lead" data-bind="calc.lead"></p>
+      </div>
+      <div id="mp-calc"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 계산 기준 -->
+<section class="wrap" id="basis" aria-labelledby="h-basis">
+  <div class="bento">
+    <div class="card s12">
+      <span class="chip">계산 기준</span>
+      <h2 id="h-basis" data-bind="basis.title"></h2>
+      <p class="lead" data-bind="basis.lead"></p>
+      <ul class="basis-list" id="basis-items"></ul>
+    </div>
+    <div class="card card--limesoft notice s12" id="notice"></div>
+  </div>
+</section>
+
+<!-- 상담 -->
+<section class="wrap" id="contact" aria-labelledby="h-contact">
+  <div class="bento">
+    <div class="card card--em contact s12">
+      <div style="position:relative">
+        <span class="chip">상담</span>
+        <h2 id="h-contact" data-bind="cta.title"></h2>
+        <p class="lead" data-bind="cta.body"></p>
+      </div>
+      <div class="actions">
+        <a class="btn btn--lime" id="cta-tel"></a>
+        <a class="btn btn--white" id="cta-site"></a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="wrap" data-bind="footer"></footer>
+
+<script src="../shared/model.js"></script>
+<script src="../shared/content.js"></script>
+<script src="../shared/widget.js"></script>
+<script>
+(function () {
+  var C = MP.copyR, T = MP.TABLES, F = MP.fmt, V = MP.V;
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
+  // 표: 모바일 카드형을 위해 각 칸에 머리글을 data-label로 붙인다
+  function table(el, headers, rows, opt) {
+    opt = opt || {};
+    var h = '<thead><tr>' + headers.map(function (x) { return '<th scope="col">' + esc(x) + '</th>'; }).join('') + '</tr></thead>';
+    var b = '<tbody>' + rows.map(function (r, ri) {
+      var key = opt.keyRow === ri ? ' class="key"' : '';
+      return '<tr' + key + '>' + r.map(function (x, i) {
+        if (i === 0) return '<th scope="row">' + esc(x) + '</th>';
+        var cls = (opt.hi === i ? 'hi' : '') + (opt.em === i ? ' em' : '');
+        return '<td data-label="' + esc(headers[i]) + '"' + (cls.trim() ? ' class="' + cls.trim() + '"' : '') + '>' + esc(x) + '</td>';
+      }).join('') + '</tr>';
+    }).join('') + '</tbody>';
+    el.innerHTML = h + b;
+  }
+  function list(el, items) { el.innerHTML = items.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join(''); }
+
+  MP.bind();
+
+  // 히어로 제목: 기기 가격만 라임색으로 강조 (문장은 그대로)
+  var title = C.hero.title, k = title.indexOf(V.unitNew);
+  $('h-hero').innerHTML = k < 0 ? esc(title) :
+    esc(title.slice(0, k)) + '<span class="hl">' + esc(V.unitNew) + '</span>' + esc(title.slice(k + V.unitNew.length));
+
+  // 핵심 숫자 3개
+  C.stats.forEach(function (s, i) {
+    $('stat' + i).innerHTML = '<div class="stat__label">' + esc(s.label) + '</div>' +
+      '<div class="stat__value num">' + esc(s.value) + '</div>' +
+      '<div class="stat__note">' + esc(s.note) + '</div>';
+  });
+
+  // 비교: 총 창업 비용 막대
+  var s8 = MP.store(8, 3);
+  $('cbars').innerHTML =
+    '<div class="cbar"><span class="cbar__name">일시불</span><div class="cbar__track"><span class="cbar__fill cbar__fill--old" style="width:100%">' + esc(V.capexLegacy8) + '</span></div></div>' +
+    '<div class="cbar"><span class="cbar__name">파트너스</span><div class="cbar__track"><span class="cbar__fill cbar__fill--new" style="width:' + (s8.capexNew / s8.capexLegacy * 100).toFixed(1) + '%">' + esc(V.capexNew8) + '</span></div></div>';
+  table($('t-compare'), C.compare.headers, T.compare, { hi: 2, em: 3, keyRow: 3 });
+
+  // 회수 기간 둥근 막대 차트
+  var max = Math.max.apply(null, T.payback.map(function (r) { return r.bepLegacy; }));
+  $('chart').innerHTML =
+    '<div class="legend"><span><i class="old"></i>일시불</span><span><i class="new"></i>파트너스</span></div>' +
+    T.payback.map(function (r) {
+      return '<div class="pb"><div class="pb__turn">' + r.turns + '회전</div>' +
+        '<div class="pb__row"><span class="pb__name">일시불</span><span class="pb__track"><span class="pb__fill old" style="width:' + (r.bepLegacy / max * 100).toFixed(1) + '%"></span></span><span class="pb__val">' + F.months(r.bepLegacy) + '</span></div>' +
+        '<div class="pb__row pb__row--new"><span class="pb__name">파트너스</span><span class="pb__track"><span class="pb__fill new" style="width:' + (r.bepNew / max * 100).toFixed(1) + '%"></span></span><span class="pb__val">' + F.months(r.bepNew) + '</span></div></div>';
+    }).join('');
+  $('points').innerHTML = C.payback.points.map(function (p, i) { return '<li><b aria-hidden="true"></b><span>' + esc(p) + '</span></li>'; }).join('');
+  table($('t-payback'), C.payback.headers, T.payback.map(function (r) {
+    return [r.turns + '회전', F.man(r.revenue), F.man(r.profitNew), F.months(r.bepNew), F.months(r.bepLegacy), F.pct(r.roiNew)];
+  }), { hi: 3, em: 5 });
+
+  // 상생 구조 3단계 (연결된 카드)
+  var stepCls = ['card', 'card card--lime', 'card card--em'];
+  $('steps').innerHTML = C.partnership.steps.map(function (s, i) {
+    return '<div class="' + stepCls[i] + ' step"><span class="step__no">' + (i + 1) + '단계</span><h3>' + esc(s.title) + '</h3><p>' + esc(s.body) + '</p></div>';
+  }).join('');
+  list($('owner'), C.partnership.owner.items);
+  list($('hq'), C.partnership.hq.items);
+  list($('support'), C.partnership.support.items);
+
+  // 과금 방식 4가지: 카드마다 큰 숫자 하나
+  var billBig = ['0원', V.royalty, V.royaltyTeam, V.bepNew5];
+  C.billing.items.forEach(function (it, i) {
+    $('bill' + i).innerHTML = '<span class="bill__no" aria-hidden="true"></span>' +
+      '<div class="bill__big num">' + esc(billBig[i]) + '</div>' +
+      '<h3>' + esc(it.title) + '</h3><p>' + esc(it.body) + '</p>';
+  });
+
+  // 게임비 중 본사 몫 도넛 (문장은 owner.items 마지막 줄)
+  var share = MP.P.royalty / MP.P.gameFee * 100;
+  var ownerItems = C.partnership.owner.items;
+  $('donut').setAttribute('aria-label', ownerItems[ownerItems.length - 1]);
+  $('donut').innerHTML = '<svg viewBox="0 0 42 42" aria-hidden="true">' +
+    '<circle cx="21" cy="21" r="15.915" fill="none" stroke="#0F7A5C" stroke-width="7"/>' +
+    '<circle cx="21" cy="21" r="15.915" fill="none" stroke="#C8F26A" stroke-width="7" stroke-dasharray="' + share.toFixed(2) + ' ' + (100 - share).toFixed(2) + '"/>' +
+    '</svg><div class="donut__c num">' + esc(V.royaltyShare) + '</div>';
+  $('dlegend').innerHTML = '<span><i style="background:#C8F26A;box-shadow:inset 0 0 0 2px #0F7A5C"></i>본사 ' + esc(V.royalty) + '</span>' +
+    '<span><i style="background:#0F7A5C"></i>점주 ' + esc(V.ownerPerPerson) + '</span>';
+
+  // 200대 한정
+  table($('t-limited'), C.limited.headers, C.limited.rows, { hi: 1 });
+  [8, 10, 20].forEach(function (n, i) {
+    $('ex' + i).innerHTML = '<span class="ex__n">' + n + '대 구매</span><div class="ex__v num">' + F.man(MP.discount(n).saveVsAfter) + '</div><span class="ex__s">할인</span>';
+  });
+
+  // 계산 기준과 고지
+  list($('basis-items'), C.basis.items);
+  $('notice').innerHTML = C.basis.notice.map(function (x) { return '<p>' + esc(x) + '</p>'; }).join('');
+
+  // 상담
+  $('cta-tel').textContent = C.cta.phoneLabel + ' ' + MP.contact.phone; $('cta-tel').href = MP.contact.tel;
+  $('cta-site').textContent = C.cta.siteLabel + ' ' + MP.contact.site; $('cta-site').href = MP.contact.url;
+
+  MP.mountCalc($('mp-calc'));
+})();
+</script>
+</body>
+</html>

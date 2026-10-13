@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>마이파크 파트너스 제안 | 에디토리얼 리포트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700;900&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{
+    --paper:#F5EFE2; --paper-2:#FBF7EE; --paper-3:#EFE6D2;
+    --ink:#14233C; --ink-2:#3C4862; --muted:#4F5A70;
+    --gold:#9A7428; --gold-text:#7E5C17; --gold-line:#B99552; --gold-soft:#EADDBF;
+    --rule:#CDBF9F; --legacy:#8C93A3;
+    --serif:"Noto Serif KR","Apple SD Gothic Neo","Malgun Gothic",serif;
+    --sans:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    --mpc-fg:var(--ink); --mpc-muted:var(--muted); --mpc-card:var(--paper-2); --mpc-line:var(--rule);
+    --mpc-accent:var(--ink); --mpc-accent-fg:#FBF7EE; --mpc-hero-bg:var(--ink); --mpc-hero-fg:#FBF7EE;
+    --mpc-radius:2px; --mpc-font:var(--sans); --mpc-num-font:var(--serif);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;background:var(--paper)}
+  @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+  body{margin:0;color:var(--ink);font:18px/1.75 var(--sans);word-break:keep-all;overflow-wrap:break-word;position:relative}
+  /* 종이 질감: 고정된 가상 요소에 아주 옅은 잡음 */
+  body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.35;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .25 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 40px}
+  h1,h2,h3{font-family:var(--serif);color:var(--ink);margin:0;font-weight:700;letter-spacing:-.01em}
+  p{margin:0}
+  .num{font-family:var(--serif);font-variant-numeric:tabular-nums lining-nums}
+
+  /* 머리띠 */
+  .mast{border-bottom:1px solid var(--ink)}
+  .mast .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
+  .mast strong{font-family:var(--serif);font-weight:700;font-size:1.05rem;letter-spacing:.02em}
+  .mast a{display:inline-flex;align-items:center;min-height:44px;padding:0 4px;font-weight:700;text-decoration:none;border-bottom:2px solid var(--gold-line)}
+  .mast a:hover{color:var(--gold-text)}
+
+  /* 표지 */
+  .cover{padding:64px 0 0}
+  .cover-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:64px;align-items:start}
+  .badge{display:inline-flex;align-items:center;gap:12px;font-weight:700;color:var(--gold-text);font-size:1rem;letter-spacing:.04em}
+  .badge::before{content:"";width:40px;height:1px;background:var(--gold)}
+  .cover h1{font-size:clamp(2.1rem,5.2vw,3.9rem);line-height:1.28;font-weight:700;margin:24px 0 0}
+  .deck{font-family:var(--serif);font-weight:500;color:var(--gold-text);font-size:clamp(1.2rem,2.4vw,1.55rem);line-height:1.55;margin-top:24px;padding-top:20px;border-top:1px solid var(--gold-line);max-width:30em}
+  .cover .sub{color:var(--ink-2);margin-top:16px;max-width:36em;font-size:1.06rem}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+  .btn{display:inline-flex;flex-wrap:wrap;column-gap:.35em;align-items:center;justify-content:center;text-align:center;min-height:56px;padding:0 28px;font-weight:700;font-size:1.05rem;text-decoration:none;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper-2);border-radius:2px}
+  .btn:hover{background:#0B1628}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn.ghost:hover{background:var(--paper-3)}
+  .toc{border-top:3px double var(--ink);padding-top:16px}
+  .toc h2{font-size:1rem;letter-spacing:.2em;color:var(--gold-text);font-weight:700;margin-bottom:6px}
+  .toc ol{list-style:none;margin:0;padding:0}
+  .toc li{border-bottom:1px solid var(--rule)}
+  .toc a{display:grid;grid-template-columns:32px minmax(0,1fr);gap:8px;align-items:baseline;min-height:48px;padding:10px 0;text-decoration:none;font-size:1rem;line-height:1.5}
+  .toc a span{font-family:var(--serif);color:var(--gold-text);font-weight:700}
+  .toc a:hover b{text-decoration:underline;text-decoration-color:var(--gold-line)}
+  .toc b{font-weight:500}
+  .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:64px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+  .stat{padding:28px 28px 30px;border-left:1px solid var(--gold-line)}
+  .stat:first-child{border-left:0;padding-left:0}
+  .stat .l{font-weight:700;color:var(--ink-2);font-size:1rem}
+  .stat .v{display:block;font-size:clamp(2rem,3.6vw,2.9rem);font-weight:700;line-height:1.2;margin:10px 0 8px;color:var(--ink)}
+  .stat .n{color:var(--muted);font-size:1rem}
+  .stat:first-child .v{color:var(--gold-text)}
+
+  /* 장 */
+  .wrap.chapter{padding-top:96px}
+  .ch-head{display:grid;grid-template-columns:150px minmax(0,1fr);gap:32px;border-top:1px solid var(--ink);padding-top:28px;margin-bottom:40px}
+  .ch-no{font-family:var(--serif);font-weight:900;color:var(--gold);font-size:96px;line-height:.9}
+  .ch-head h2{font-size:clamp(1.65rem,3.4vw,2.45rem);line-height:1.35}
+  .ch-head .lead{margin-top:16px;color:var(--ink-2);max-width:42em}
+  .ch-body{margin-left:182px}
+  .foot{color:var(--muted);font-size:.95rem;margin-top:16px;line-height:1.65}
+  h3.sub-h{font-size:1.3rem;margin:48px 0 18px;padding-bottom:10px;border-bottom:1px solid var(--gold-line)}
+
+  /* 인용 숫자 */
+  .pull{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 32px;border-top:3px double var(--gold-line);border-bottom:1px solid var(--gold-line);padding:22px 0;margin-bottom:36px}
+  .pull .l{font-family:var(--serif);font-weight:600;font-size:1.2rem;color:var(--ink-2)}
+  .pull .v{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:700;color:var(--gold-text);line-height:1.1}
+
+  /* 표 */
+  table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+  caption{text-align:left}
+  .rtable{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+  .rtable th,.rtable td{padding:15px 16px;text-align:right;border-bottom:1px solid var(--rule);vertical-align:baseline}
+  .rtable thead th{font-family:var(--sans);font-weight:700;font-size:.95rem;color:var(--ink-2);border-bottom:1px solid var(--ink);vertical-align:bottom;line-height:1.45}
+  .rtable th:first-child{text-align:left}
+  .rtable tbody th{font-weight:700;text-align:left}
+  .rtable tbody tr:last-child th,.rtable tbody tr:last-child td{border-bottom:0}
+  .rtable .hl{background:rgba(234,221,191,.55)}
+  .rtable tbody .hl{font-weight:700}
+  .rtable .gold{color:var(--gold-text);font-weight:700}
+  .rtable tr.key th,.rtable tr.key td{font-size:1.12rem}
+  .rtable .grp{text-align:center;font-family:var(--serif);font-size:1rem;color:var(--ink);border-bottom:1px solid var(--gold-line)}
+
+  /* 막대 차트 */
+  .chart{border-top:2px solid var(--ink);border-bottom:1px solid var(--ink);padding:18px 0 22px;margin-bottom:36px}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 28px;font-size:1rem;color:var(--ink-2);margin-bottom:12px}
+  .legend span{display:inline-flex;align-items:center;gap:10px}
+  .legend i{display:inline-block;width:28px;height:12px}
+  .k-new{background:var(--ink)}
+  .k-old{background:var(--paper-2);border:1.5px solid var(--legacy);background-image:repeating-linear-gradient(135deg,transparent 0 4px,rgba(140,147,163,.55) 4px 5.5px)}
+  .crow{display:grid;grid-template-columns:110px minmax(0,1fr);gap:20px;align-items:center;padding:14px 0;border-top:1px solid var(--rule)}
+  .crow:first-of-type{border-top:0}
+  .crow h4{margin:0;font-family:var(--serif);font-size:1.3rem;font-weight:700}
+  .bars{display:grid;gap:8px}
+  .bar{display:flex;align-items:center;gap:12px;min-height:30px}
+  .bar i{display:block;height:20px;flex:none}
+  .bar b{font-family:var(--serif);font-weight:700;font-size:1.08rem;white-space:nowrap}
+  .bar.old b{color:var(--muted);font-weight:600}
+  .points{list-style:none;margin:0 0 36px;padding:0;display:grid;gap:0;counter-reset:p}
+  .points li{display:grid;grid-template-columns:48px minmax(0,1fr);gap:12px;padding:16px 0;border-bottom:1px solid var(--rule);counter-increment:p}
+  .points li::before{content:counter(p);font-family:var(--serif);font-weight:700;font-size:1.5rem;color:var(--gold);line-height:1.2}
+  .points li:last-child{background:linear-gradient(var(--paper-3),var(--paper-3))}
+  .points li:last-child{background:var(--paper-3);padding-left:14px;padding-right:14px;font-weight:600}
+
+  /* 과금 방식 */
+  .split{border-top:3px double var(--gold-line);border-bottom:1px solid var(--gold-line);padding:22px 0 24px;margin-bottom:36px}
+  .split .cap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 24px;align-items:baseline;margin-bottom:14px}
+  .split .cap b{font-family:var(--serif);font-size:1.3rem}
+  .split .cap span{color:var(--ink-2)}
+  .split-bar{display:flex;height:30px;border:1px solid var(--ink)}
+  .split-bar i{display:block;height:100%}
+  .split-bar .own{background:var(--ink)}
+  .split-bar .hq{background:var(--gold-line)}
+  .split-legend{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;margin-top:12px}
+  .split-legend div{display:flex;align-items:baseline;gap:10px}
+  .split-legend i{display:inline-block;width:14px;height:14px;align-self:center}
+  .split-legend b{font-family:var(--serif);font-size:1.35rem}
+  .bill{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+  .bill-item{display:grid;grid-template-columns:56px minmax(0,1fr);gap:4px 16px;padding:28px 28px 30px 0;border-bottom:1px solid var(--rule)}
+  .bill-item:nth-child(even){padding-left:28px;padding-right:0;border-left:1px solid var(--gold-line)}
+  .bill-item:nth-last-child(-n+2){border-bottom:0}
+  .bill-item .no{font-family:var(--serif);font-weight:900;font-size:2.6rem;line-height:1;color:var(--gold)}
+  .bill-item h3{font-size:clamp(1.35rem,2.4vw,1.65rem);line-height:1.35;margin-bottom:10px}
+  .bill-item p{color:var(--ink-2)}
+  .bill-item:first-child h3{color:var(--gold-text)}
+
+  /* 상생 구조 */
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--ink);border-bottom:1px solid var(--ink)}
+  .step{padding:26px 26px 28px;border-left:1px solid var(--gold-line)}
+  .step:first-child{border-left:0;padding-left:0}
+  .step .s{font-weight:700;color:var(--gold-text);font-size:.98rem;letter-spacing:.05em}
+  .step h3{font-size:1.32rem;margin:8px 0 10px}
+  .step p{color:var(--ink-2)}
+  .cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;margin-top:48px}
+  .col h3{font-size:1.3rem;padding-bottom:10px;border-bottom:1px solid var(--ink)}
+  .rlist{list-style:none;margin:0;padding:0}
+  .rlist li{padding:13px 0 13px 22px;border-bottom:1px solid var(--rule);position:relative}
+  .rlist li::before{content:"";position:absolute;left:0;top:1.35em;width:10px;height:1px;background:var(--gold)}
+  .support{margin-top:48px;border:1px solid var(--gold-line);background:var(--paper-2);padding:28px 32px}
+  .support h3{font-size:1.3rem;margin-bottom:16px}
+  .support ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px;counter-reset:s}
+  .support li{counter-increment:s;display:grid;grid-template-columns:36px minmax(0,1fr);padding:12px 0;border-top:1px solid var(--rule);font-weight:600}
+  .support li::before{content:counter(s);font-family:var(--serif);color:var(--gold-text);font-weight:700}
+  .trust{margin-top:56px;font-family:var(--serif);font-weight:500;font-size:clamp(1.2rem,2.3vw,1.5rem);line-height:1.7;color:var(--ink);max-width:36em}
+  .trust::before{content:"";display:block;width:56px;height:3px;background:var(--gold);margin-bottom:20px}
+
+  /* 한정 조건 */
+  .examples{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--ink);border-bottom:1px solid var(--ink)}
+  .ex{padding:24px 24px 26px;border-left:1px solid var(--gold-line)}
+  .ex:first-child{border-left:0;padding-left:0}
+  .ex .l{font-weight:700;color:var(--ink-2)}
+  .ex .v{display:block;font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:var(--gold-text);line-height:1.2;margin:8px 0 6px}
+  .ex .n{color:var(--muted);font-size:1rem}
+
+  /* 계산기: 보고서 부록 */
+  .appendix{border:1px solid var(--ink);background:var(--paper-2);padding:36px 40px}
+  .appendix .mpc{font-size:18px}
+  .appendix .mpc__chip{border-radius:2px;border-width:1.5px;min-height:52px;font-size:1.05rem}
+  .appendix .mpc__chip--on{box-shadow:inset 0 -3px 0 var(--gold-line)}
+  .appendix .mpc__stepper button,.appendix .mpc__stepper input{border-radius:2px;border-width:1.5px}
+  .appendix .mpc__hero{border-radius:2px;padding:26px 28px;border-top:4px solid var(--gold-line)}
+  .appendix .mpc__hero-value{font-family:var(--serif);font-weight:700;color:#F3E2B8}
+  .appendix .mpc__rows{border-radius:0;border:0;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);background:transparent}
+  .appendix .mpc__row{padding:14px 4px;border-top-color:var(--rule)}
+  .appendix .mpc__row dd{font-family:var(--serif);font-size:1.12rem}
+  .appendix .mpc__row--key{background:rgba(234,221,191,.6)}
+  .appendix .mpc__row--key dd{color:var(--gold-text)}
+  .appendix .mpc__save2{font-family:var(--serif);font-size:1.15rem;padding:14px 0;border-bottom:1px solid var(--gold-line)}
+  .appendix .mpc__store{border-top:3px double var(--ink);padding-top:22px}
+  .appendix .mpc__store-title{font-family:var(--serif);font-size:1.3rem}
+  .appendix .mpc__seg{border-radius:2px;border-width:1.5px}
+  .appendix .mpc__seg-btn{min-height:50px;padding:0 26px;font-size:1.02rem}
+  .appendix .mpc__note{font-size:1rem;line-height:1.65}
+  .appendix .mpc__row small{font-size:1rem}
+  @media (min-width:960px){
+    .appendix .mpc__result{grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:32px;align-items:start}
+    .appendix .mpc__save2{grid-column:1/-1}
+    .appendix .mpc__store .mpc__rows{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px}
+    .appendix .mpc__store .mpc__row:nth-child(2){border-top:0}
+  }
+
+  /* 계산 기준 */
+  .basis{list-style:none;margin:0;padding:0;counter-reset:b;border-top:2px solid var(--ink)}
+  .basis li{counter-increment:b;display:grid;grid-template-columns:48px minmax(0,1fr);gap:8px;padding:14px 0;border-bottom:1px solid var(--rule);font-size:1rem;line-height:1.7}
+  .basis li::before{content:counter(b);font-family:var(--serif);font-weight:700;color:var(--gold-text)}
+  .notice{margin-top:32px;border:1px solid var(--ink);padding:24px 28px;display:grid;gap:10px;font-size:1rem;line-height:1.7;color:var(--ink-2)}
+  .notice h3{font-size:1.1rem;color:var(--ink)}
+
+  /* 상담 */
+  .contact{margin-top:112px;background:var(--ink);color:#F5EFE2;padding:80px 0}
+  .contact .inner{display:grid;grid-template-columns:150px minmax(0,1fr);gap:32px}
+  .contact .ch-no{color:#C9A55C}
+  .contact h2{color:#FBF7EE;font-size:clamp(1.65rem,3.4vw,2.45rem);line-height:1.35}
+  .contact p{margin-top:18px;color:#E4DCCB;max-width:40em}
+  .contact .actions{margin-top:36px}
+  .contact .btn{background:#E2C887;border-color:#E2C887;color:var(--ink)}
+  .contact .btn:hover{background:#EED9A4}
+  .contact .btn.ghost{background:transparent;color:#FBF7EE;border-color:#E2C887}
+  .contact .btn.ghost:hover{background:#1E3050}
+  .contact :focus-visible{outline-color:#E2C887}
+  footer{background:var(--ink);color:#D7CFBE;border-top:1px solid #3A4A66;padding:24px 0 40px;font-size:.95rem}
+
+  /* 태블릿 이하 */
+  @media (max-width:1000px){
+    .wrap{padding:0 28px}
+    .cover-grid{grid-template-columns:1fr;gap:48px}
+    .ch-head{grid-template-columns:1fr;gap:12px}
+    .ch-no{font-size:64px}
+    .ch-body{margin-left:0}
+    .contact .inner{grid-template-columns:1fr;gap:12px}
+    .cols{gap:36px}
+  }
+  /* 표를 카드로: 회수 기간 표는 넓어서 더 일찍 바꾼다 */
+  @media (max-width:900px){
+    .rtable.wide thead{display:none}
+    .rtable.wide,.rtable.wide tbody,.rtable.wide tr,.rtable.wide th,.rtable.wide td{display:block}
+    .rtable.wide{border-bottom:0}
+    .rtable.wide tr{border-bottom:2px solid var(--ink);padding:6px 0 10px}
+    .rtable.wide tbody th{font-family:var(--serif);font-size:1.3rem;border-bottom:1px solid var(--gold-line);padding:12px 0}
+    .rtable.wide td{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 10px;border-bottom:1px solid var(--rule)}
+    .rtable.wide td::before{content:attr(data-label);font-weight:600;color:var(--ink-2);text-align:left}
+        .rtable.wide tbody tr:last-child td:last-child{border-bottom:0}
+  }
+  @media (max-width:700px){
+    .rtable thead{display:none}
+    .rtable,.rtable tbody,.rtable tr,.rtable th,.rtable td{display:block}
+    .rtable{border-bottom:0}
+    .rtable tr{border-bottom:2px solid var(--ink);padding:6px 0 10px}
+    .rtable tbody th{font-family:var(--serif);font-size:1.2rem;border-bottom:1px solid var(--gold-line);padding:12px 0}
+    .rtable td{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 10px;border-bottom:1px solid var(--rule)}
+    .rtable td::before{content:attr(data-label);font-weight:600;color:var(--ink-2);text-align:left}
+        .rtable tbody tr:last-child td:last-child{border-bottom:0}
+  }
+  @media (max-width:760px){
+    .stats,.steps,.examples,.bill{grid-template-columns:1fr}
+    .bill-item,.bill-item:nth-child(even){padding:24px 0;border-left:0;grid-template-columns:44px minmax(0,1fr)}
+    .bill-item:nth-last-child(2){border-bottom:1px solid var(--rule)}
+    .bill-item .no{font-size:2.1rem}
+    .stat,.step,.ex{border-left:0;padding-left:0;padding-right:0;border-top:1px solid var(--gold-line)}
+    .stat:first-child,.step:first-child,.ex:first-child{border-top:0}
+    .cols{grid-template-columns:1fr}
+    .support ol{grid-template-columns:1fr}
+  }
+  @media (max-width:520px){
+    body{font-size:17px}
+    .wrap{padding:0 20px}
+    .cover{padding-top:40px}
+    .wrap.chapter{padding-top:72px}
+    .actions .btn{width:100%}
+    .crow{grid-template-columns:1fr;gap:8px}
+    .appendix{padding:24px 14px;margin:0 -6px}
+    .support{padding:22px 18px}
+    .notice{padding:20px 18px}
+    .pull .v{font-size:2.5rem}
+    .appendix .mpc__stepper input{width:72px}
+    .appendix .mpc__seg{width:100%}
+    .appendix .mpc__seg-btn{flex:1;padding:0 8px}
+    .contact{padding:64px 0}
+  }
+</style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%230F7A5C'/%3E%3C/svg%3E">
+</head>
+<body>
+<header class="mast">
+  <div class="wrap">
+    <strong data-bind="brand"></strong>
+    <a href="#contact" data-bind="hero.ctaSecondary"></a>
+  </div>
+</header>
+
+<main>
+<section class="cover" id="top" aria-labelledby="h-cover">
+  <div class="wrap">
+    <div class="cover-grid">
+      <div>
+        <span class="badge" data-bind="hero.badge"></span>
+        <h1 id="h-cover" data-bind="hero.title"></h1>
+        <p class="deck" data-bind="hero.titleAlt"></p>
+        <p class="sub" data-bind="hero.sub"></p>
+        <div class="actions">
+          <a class="btn" href="#calc" data-bind="hero.ctaPrimary"></a>
+          <a class="btn ghost" href="#contact" data-bind="hero.ctaSecondary"></a>
+        </div>
+      </div>
+      <nav class="toc" aria-labelledby="h-toc">
+        <h2 id="h-toc">차례</h2>
+        <ol id="toc"></ol>
+      </nav>
+    </div>
+    <div class="stats" id="stats"></div>
+  </div>
+</section>
+
+<section class="chapter wrap" id="compare" aria-labelledby="h-compare">
+  <div class="ch-head">
+    <div class="ch-no" aria-hidden="true">1</div>
+    <div><h2 id="h-compare" data-bind="compare.title"></h2><p class="lead" data-bind="compare.lead"></p></div>
+  </div>
+  <div class="ch-body">
+    <div class="pull"><span class="l" data-bind="compare.saveLabel"></span><span class="v num" data-bind="compare.saveValue"></span></div>
+    <table class="rtable" id="t-compare"></table>
+    <p class="foot" data-bind="compare.foot"></p>
+  </div>
+</section>
+
+<section class="chapter wrap" id="payback" aria-labelledby="h-payback">
+  <div class="ch-head">
+    <div class="ch-no" aria-hidden="true">2</div>
+    <div><h2 id="h-payback" data-bind="payback.title"></h2><p class="lead" data-bind="payback.lead"></p></div>
+  </div>
+  <div class="ch-body">
+    <figure class="chart" style="margin:0 0 36px">
+      <div class="legend" id="legend"></div>
+      <div id="bars"></div>
+    </figure>
+    <ol class="points" id="points"></ol>
+    <table class="rtable wide" id="t-payback"></table>
+    <p class="foot" data-bind="payback.foot"></p>
+  </div>
+</section>
+
+<section class="chapter wrap" id="billing" aria-labelledby="h-billing">
+  <div class="ch-head">
+    <div class="ch-no" aria-hidden="true">3</div>
+    <div><h2 id="h-billing" data-bind="billing.title"></h2><p class="lead" data-bind="billing.lead"></p></div>
+  </div>
+  <div class="ch-body">
+    <div class="split" id="split"></div>
+    <div class="bill" id="bill"></div>
+  </div>
+</section>
+
+<section class="chapter wrap" id="partners" aria-labelledby="h-partners">
+  <div class="ch-head">
+    <div class="ch-no" aria-hidden="true">4</div>
+    <div><h2 id="h-partners" data-bind="partnership.title"></h2><p class="lead" data-bind="partnership.lead"></p></div>
+  </div>
+  <div class="ch-body">
+    <div class="steps" id="steps"></div>
+    <div class="cols">
+      <div class="col"><h3 data-bind="partnership.owner.title"></h3><ul class="rlist" id="owner"></ul></div>
+      <div class="col"><h3 data-bind="partnership.hq.title"></h3><ul class="rlist" id="hq"></ul></div>
+    </div>
+    <div class="support"><h3 data-bind="partnership.support.title"></h3><ol id="support"></ol></div>
+    <p class="trust" data-bind="partnership.trust"></p>
+  </div>
+</section>
+
+<section class="chapter wrap" id="limited" aria-labelledby="h-limited">
+  <div class="ch-head">
+    <div class="ch-no" aria-hidden="true">5</div>
+    <div><h2 id="h-limited" data-bind="limited.title"></h2><p class="lead" data-bind="limited.lead"></p></div>
+  </div>
+  <div class="ch-body">
+    <table class="rtable" id="t-limited"></table>
+    <h3 class="sub-h" data-bind="limited.examplesTitle"></h3>
+    <div class="examples" id="examples"></div>
+    <p class="foot" data-bind="limited.note"></p>
+  </div>
+</section>
+
+<section class="chapter wrap" id="calc" aria-labelledby="h-calc">
+  <div class="ch-head">
+    <div class="ch-no" aria-hidden="true">6</div>
+    <div><h2 id="h-calc" data-bind="calc.title"></h2><p class="lead" data-bind="calc.lead"></p></div>
+  </div>
+  <div class="ch-body">
+    <div class="appendix"><div id="mp-calc"></div></div>
+  </div>
+</section>
+
+<section class="chapter wrap" id="basis" aria-labelledby="h-basis">
+  <div class="ch-head">
+    <div class="ch-no" aria-hidden="true">7</div>
+    <div><h2 id="h-basis" data-bind="basis.title"></h2><p class="lead" data-bind="basis.lead"></p></div>
+  </div>
+  <div class="ch-body">
+    <ol class="basis" id="basis-items"></ol>
+    <div class="notice" id="notice"></div>
+  </div>
+</section>
+
+<section class="contact" id="contact" aria-labelledby="h-contact">
+  <div class="wrap inner">
+    <div class="ch-no" aria-hidden="true">8</div>
+    <div>
+      <h2 id="h-contact" data-bind="cta.title"></h2>
+      <p data-bind="cta.body"></p>
+      <div class="actions"><a class="btn" id="cta-tel"></a><a class="btn ghost" id="cta-site"></a></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap" data-bind="footer"></div></footer>
+
+<script src="../shared/model.js"></script>
+<script src="../shared/content.js"></script>
+<script src="../shared/widget.js"></script>
+<script>
+(function () {
+  var C = MP.copyR, T = MP.TABLES, F = MP.fmt;
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
+  // hl: 강조할 열 번호 목록
+  function table(el, headers, rows, hl) {
+    hl = hl || [];
+    var h = '<thead><tr>' + headers.map(function (x, i) { return '<th scope="col"' + (hl.indexOf(i) >= 0 ? ' class="hl"' : '') + '>' + esc(x) + '</th>'; }).join('') + '</tr></thead>';
+    var b = '<tbody>' + rows.map(function (r) {
+      return '<tr>' + r.map(function (x, i) {
+        if (i === 0) return '<th scope="row">' + esc(x) + '</th>';
+        return '<td data-label="' + esc(headers[i]) + '"' + (hl.indexOf(i) >= 0 ? ' class="hl"' : '') + '>' + esc(x) + '</td>';
+      }).join('') + '</tr>';
+    }).join('') + '</tbody>';
+    el.innerHTML = h + b;
+  }
+  function list(el, items) { el.innerHTML = items.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join(''); }
+  MP.bind();
+
+  // 차례
+  var toc = [['compare', C.compare.title], ['payback', C.payback.title], ['billing', C.billing.title], ['partners', C.partnership.title],
+    ['limited', C.limited.title], ['calc', C.calc.title], ['basis', C.basis.title], ['contact', C.cta.title]];
+  $('toc').innerHTML = toc.map(function (t, i) { return '<li><a href="#' + t[0] + '"><span>' + (i + 1) + '</span><b>' + esc(t[1]) + '</b></a></li>'; }).join('');
+
+  $('stats').innerHTML = C.stats.map(function (s) {
+    return '<div class="stat"><div class="l">' + esc(s.label) + '</div><b class="v num">' + esc(s.value) + '</b><div class="n">' + esc(s.note) + '</div></div>';
+  }).join('');
+
+  table($('t-compare'), C.compare.headers, T.compare, [2]);
+  $('t-compare').querySelectorAll('tbody tr').forEach(function (tr, i) { if (T.compare[i][0] === '총 창업 비용') tr.className = 'key'; });
+
+  // 회수 기간 막대 (가장 긴 값을 막대 최대 길이로)
+  var H = C.compare.headers;            // [항목, 기존 일시불 방식, 파트너스 방식, 차이]
+  $('legend').innerHTML = '<span><i class="k-new"></i>' + esc(H[2]) + '</span><span><i class="k-old"></i>' + esc(H[1]) + '</span>';
+  var max = Math.max.apply(null, T.payback.map(function (r) { return r.bepLegacy; }));
+  function bar(cls, v) {
+    return '<div class="bar ' + cls + '"><i class="' + (cls === 'old' ? 'k-old' : 'k-new') + '" style="width:calc((100% - 7.5em) * ' + (v / max).toFixed(4) + ')"></i><b>' + F.months(v) + '</b></div>';
+  }
+  $('bars').innerHTML = T.payback.map(function (r) {
+    return '<div class="crow"><h4>' + r.turns + '회전</h4><div class="bars">' + bar('new', r.bepNew) + bar('old', r.bepLegacy) + '</div></div>';
+  }).join('');
+  list($('points'), C.payback.points);
+
+  // 회수 기간 표: 두 방식의 월 순수익, 회수 기간, 연 수익률을 나란히
+  var PH = C.payback.headers;           // [하루 회전, 월 매출, 월 순수익, 투자금 회수 (파트너스), 투자금 회수 (일시불), 연 수익률 (파트너스)]
+  var base = function (s) { return s.replace(/\s*\(.*\)$/, ''); };
+  var sub = [PH[2], base(PH[3]), base(PH[5])];
+  var newL = H[2], oldL = H[1];
+  var th = '<thead><tr><th scope="col" rowspan="2">' + esc(PH[0]) + '</th><th scope="col" rowspan="2">' + esc(PH[1]) + '</th>' +
+    '<th scope="colgroup" colspan="3" class="grp hl">' + esc(newL) + '</th><th scope="colgroup" colspan="3" class="grp">' + esc(oldL) + '</th></tr><tr>' +
+    sub.map(function (x) { return '<th scope="col" class="hl">' + esc(x) + '</th>'; }).join('') +
+    sub.map(function (x) { return '<th scope="col">' + esc(x) + '</th>'; }).join('') + '</tr></thead>';
+  var tb = '<tbody>' + T.payback.map(function (r) {
+    var cells = [
+      [PH[1], F.man(r.revenue), ''],
+      [sub[0] + ' (' + newL + ')', F.man(r.profitNew), 'hl'],
+      [sub[1] + ' (' + newL + ')', F.months(r.bepNew), 'hl gold'],
+      [sub[2] + ' (' + newL + ')', F.pct(r.roiNew), 'hl'],
+      [sub[0] + ' (' + oldL + ')', F.man(r.profitLegacy), ''],
+      [sub[1] + ' (' + oldL + ')', F.months(r.bepLegacy), ''],
+      [sub[2] + ' (' + oldL + ')', F.pct(r.roiLegacy), '']
+    ];
+    return '<tr><th scope="row">' + r.turns + '회전</th>' + cells.map(function (c) {
+      return '<td data-label="' + esc(c[0]) + '"' + (c[2] ? ' class="' + c[2] + '"' : '') + '>' + esc(c[1]) + '</td>';
+    }).join('') + '</tr>';
+  }).join('') + '</tbody>';
+  $('t-payback').innerHTML = th + tb;
+
+  // 과금 방식: 1인 게임비 중 점주 몫과 본사 몫
+  var V = MP.V, hqPct = MP.P.royalty / MP.P.gameFee * 100;
+  $('split').innerHTML = '<div class="cap"><b>1인 18홀 ' + V.gameFee + '</b><span>' + esc(C.billing.items[2].title) + '</span></div>' +
+    '<div class="split-bar" role="img" aria-label="점주 ' + V.ownerPerPerson + ', 본사 ' + V.royalty + '"><i class="own" style="width:' + (100 - hqPct) + '%"></i><i class="hq" style="width:' + hqPct + '%"></i></div>' +
+    '<div class="split-legend"><div><i class="k-new"></i>점주<b class="num">' + V.ownerPerPerson + '</b></div><div><i class="hq" style="background:var(--gold-line)"></i>본사<b class="num">' + V.royalty + '</b><span>' + V.royaltyShare + '</span></div></div>';
+  $('bill').innerHTML = C.billing.items.map(function (it, i) {
+    return '<div class="bill-item"><div class="no" aria-hidden="true">' + (i + 1) + '</div><div><h3>' + esc(it.title) + '</h3><p>' + esc(it.body) + '</p></div></div>';
+  }).join('');
+
+  $('steps').innerHTML = C.partnership.steps.map(function (s, i) {
+    return '<div class="step"><div class="s">' + (i + 1) + '단계</div><h3>' + esc(s.title) + '</h3><p>' + esc(s.body) + '</p></div>';
+  }).join('');
+  list($('owner'), C.partnership.owner.items); list($('hq'), C.partnership.hq.items); list($('support'), C.partnership.support.items);
+
+  table($('t-limited'), C.limited.headers, C.limited.rows, [1]);
+  var off = { 8: 'off8', 10: 'off10', 20: 'off20' };
+  $('examples').innerHTML = [8, 10, 20].map(function (n) {
+    var d = MP.discount(n);
+    return '<div class="ex"><div class="l">' + n + '대 구매</div><b class="v num">' + MP.V[off[n]] + '</b><div class="n">' + F.eok(d.after) + ' 대신 ' + F.eok(d.partners) + '</div></div>';
+  }).join('');
+
+  list($('basis-items'), C.basis.items);
+  $('notice').innerHTML = '<h3>법적 고지</h3>' + C.basis.notice.map(function (x) { return '<p>' + esc(x) + '</p>'; }).join('');
+
+  $('cta-tel').textContent = C.cta.phoneLabel + ' ' + MP.contact.phone; $('cta-tel').href = MP.contact.tel;
+  $('cta-site').innerHTML = '<span>' + esc(C.cta.siteLabel) + '</span><span style="white-space:nowrap">' + esc(MP.contact.site) + '</span>'; $('cta-site').href = MP.contact.url;
+  MP.mountCalc($('mp-calc'));
+})();
+</script>
+</body>
+</html>
