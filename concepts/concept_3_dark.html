@@ -521,7 +521,7 @@
   var d = MP.discount(MP.P.baseUnits);
   $('hero-num-l').textContent = C.stats[0].label;
   $('hero-bars').innerHTML = [
-    { l: '일시불', v: V.equipLegacy10, w: 1, c: 'old' },
+    { l: '기존', v: V.equipLegacy10, w: 1, c: 'old' },
     { l: '파트너스', v: V.equipNew10, w: d.partners / d.legacy, c: 'new' }
   ].map(function (b) {
     return '<div class="mbar"><div class="mbar-top"><span>' + b.l + '</span><b class="num">' + esc(b.v) + '</b></div>' +

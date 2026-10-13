@@ -25,11 +25,11 @@
     plus: '1대 늘리기',
     heroLabel: '200대 이후 예정가보다 적게 드는 금액',
     heroSub: '{pct} 할인 (200대 이후 예정가 기준)',
-    rowLegacy: '기존 일시불 방식',
+    rowLegacy: '기존 기기값',
     rowAfter: '200대 이후 예정가',
     rowPartners: '파트너스 가격',
     rowFormula: '{n}대 × {unit}',
-    save2: '기존 일시불 방식과 비교하면 {amount} 적게 듭니다 ({pct} 절감)',
+    save2: '기존 기기값과 비교하면 {amount} 적게 듭니다 ({pct} 절감)',
     noteBase: '장비 대금 기준 금액입니다.',
     note200: '200대 이후 가격은 예정 단계이며 변경될 수 있습니다.',
     max: 200

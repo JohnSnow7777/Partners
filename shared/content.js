@@ -19,18 +19,18 @@
 
     // 첫 번째 큰 주제: 10대 장비 9,900만원 파트너스 매장 모집
     hero: {
-      badge: '선착순 200대 한정 파트너스 매장 모집',
-      title: '{base} 기준 {equipNew10}으로 창업하는 스크린 파크골프 매장',
-      titleAlt: '기존 일시불 방식보다 장비 대금을 {save10} 적게 시작합니다',
-      sub: '기기 1대 {unitNew}, {base} 장비 대금이 {equipNew10}입니다. 같은 {base}를 기존 일시불 방식(1대 {unitLegacy})으로 구매하면 {equipLegacy10}입니다.',
+      badge: '선착순 200대 한정 모집',
+      title: '스크린 파크골프 파트너스 창업 프로그램, {base} 기준 {equipNew10}',
+      titleAlt: '기존 기기값보다 장비 대금을 {save10} 적게 창업합니다',
+      sub: '파트너스 창업 프로그램은 기기값을 낮추고, 매달 내는 고정비 없이 손님이 올 때만 비용을 내는 창업 방식입니다. 기기 1대 {unitNew}, {base} 장비 대금은 {equipNew10}입니다.',
       scope: '장비 대금 기준입니다. 인테리어와 설비 등 장비 외 비용은 별도입니다.',
       ctaPrimary: '내 대수 계산해 보기',
       ctaSecondary: '상담 문의하기'
     },
 
     stats: [
-      { label: '{base} 장비 대금', value: '{equipNew10}', note: '기존 일시불 방식은 {equipLegacy10}' },
-      { label: '기기 1대 가격', value: '{unitNew}', note: '기존 일시불 방식은 {unitLegacy}' },
+      { label: '{base} 장비 대금', value: '{equipNew10}', note: '기존 기기값은 {equipLegacy10}' },
+      { label: '기기 1대 가격', value: '{unitNew}', note: '기존 기기값은 {unitLegacy}' },
       { label: '월 고정 로열티', value: '0원', note: '플레이된 게임에만 1인 {royalty}' }
     ],
 
@@ -44,13 +44,13 @@
         { title: '손님이 올 때만 1인 {royalty}', body: '손님이 와서 게임(18홀)을 플레이할 때만 1인당 {royalty}씩 차감됩니다. 이것을 라운드 비용이라고 부릅니다.' },
         { title: '소프트웨어 업그레이드 무상', body: '코스와 펌웨어를 포함한 소프트웨어 업그레이드를 무상으로 계속 제공합니다.' }
       ],
-      legacy: '기존 일시불 방식은 기기를 1대 {unitLegacy}에 한 번에 구매하고, 창업 1년 후부터 기기 1대당 월 {licenseLegacy}의 고정비를 내는 방식입니다.'
+      legacy: '기존 방식은 기기를 1대 {unitLegacy}에 구매하고, 창업 1년 후부터 기기 1대당 월 {licenseLegacy}의 고정비를 냅니다.'
     },
 
     compare: {
       title: '{base} 장비 대금을 비교했습니다',
       lead: '같은 {base}를 구매할 때 기기 값과 본사에 내는 비용이 어떻게 다른지 정리했습니다.',
-      headers: ['항목', '기존 일시불 방식', '파트너스 방식', '차이'],
+      headers: ['항목', '기존 기기값', '파트너스 방식', '차이'],
       saveLabel: '{base} 장비 대금 차이',
       saveValue: '{save10}',
       foot: '장비 대금 기준입니다. 인테리어, 설비, 임대보증금, 권리금, 부가세, 세금 등 장비 외 비용은 별도입니다. 기존 방식의 시스템 라이선스는 창업 1년 후부터 시작됩니다.'
@@ -61,7 +61,7 @@
       title: '기기값과 매달 내는 비용이 이렇게 다릅니다',
       lead: '기기값은 낮아지고, 매달 내던 고정비는 이용한 만큼 내는 라운드 비용으로 바뀝니다.',
       mid: '비교',
-      legacy: { tag: '기존 일시불 방식', price: '{unitLegacy}', priceNote: '기기 1대', feeTitle: '창업 1년 후부터', fee: '월 {licenseLegacy}', feeNote: '기기 1대당 고정비, {base} 월 {licenseLegacy10}' },
+      legacy: { tag: '기존 기기값', price: '{unitLegacy}', priceNote: '기기 1대', feeTitle: '창업 1년 후부터', fee: '월 {licenseLegacy}', feeNote: '기기 1대당 고정비, {base} 월 {licenseLegacy10}' },
       partners: { tag: '파트너스 방식', price: '{unitNew}', priceNote: '기기 1대', feeTitle: '월 기기당 고정비 0원', fee: '1인 {royalty}', feeNote: '플레이된 게임당 라운드 비용, 4인 1팀 {royaltyTeam}' },
       points: [
         '월 기기당 고정비는 0원이고, 손님이 없는 달에는 라운드 비용도 0원입니다.',
@@ -136,10 +136,10 @@
       lead: '아래 기준으로 계산한 값입니다.',
       items: [
         '규모: {base} 기준 (표준 10타석)',
-        '기기: 파트너스 1대 {unitNew}, 기존 일시불 방식 1대 {unitLegacy}, 200대 이후 예정가 1대 {unitAfter}',
+        '기기: 파트너스 1대 {unitNew}, 기존 기기값 1대 {unitLegacy}, 200대 이후 예정가 1대 {unitAfter}',
         '장비 외 비용(인테리어, 설비, 임대보증금, 권리금, 부가세, 세금)은 별도입니다',
         '로열티: 1인 1게임당 {royalty}, 4인 1팀 {royaltyTeam}. 월 고정 로열티와 시스템 관리 라이선스는 0원',
-        '기존 일시불 방식: 창업 1년 후부터 기기 1대당 시스템 라이선스 월 {licenseLegacy}, 게임당 로열티 없음',
+        '기존 방식: 창업 1년 후부터 기기 1대당 시스템 라이선스 월 {licenseLegacy}, 게임당 로열티 없음',
         '게임비 1인 18홀 {gameFee}'
       ],
       notice: [
