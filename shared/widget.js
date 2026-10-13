@@ -17,7 +17,7 @@
   var F = MP.fmt;
 
   var UI = {
-    chipsLabel: '구매 대수',
+    chipsLabel: '창업 대수',
     chips: [6, 8, 10, 12, 20, 30],
     inputLabel: '직접 입력',
     unit: '대',
@@ -83,7 +83,7 @@
     '.mpc__row:first-child{border-top:0}',
     '.mpc__row dt{margin:0;font-weight:600}',
     '.mpc__row dd{margin:0;text-align:right;font-weight:800;font-variant-numeric:tabular-nums;font-family:var(--mpc-num-font,inherit)}',
-    '.mpc__row small{grid-column:1/-1;color:var(--_muted);font-size:.9rem;font-weight:500}',
+    '.mpc__row dt small{display:block;color:var(--_muted);font-size:.9rem;font-weight:500}',
     '.mpc__row--key{background:color-mix(in srgb,var(--_acc) 9%,var(--_card))}',
     '.mpc__row--key dd{color:var(--_acc)}',
     '.mpc__save2{font-weight:700}',
@@ -137,8 +137,9 @@
       var dl = el('dl', cls || 'mpc__rows');
       list.forEach(function (r) {
         var d = el('div', 'mpc__row' + ((r.key === 'partners' || r.strong) ? ' mpc__row--key' : ''));
-        d.appendChild(el('dt', null, r.label)); d.appendChild(el('dd', null, r.value));
-        if (r.formula) d.appendChild(el('small', null, r.formula));
+        var dt = el('dt', null, r.label);
+        if (r.formula) dt.appendChild(el('small', null, r.formula));
+        d.appendChild(dt); d.appendChild(el('dd', null, r.value));
         dl.appendChild(d);
       });
       return dl;
