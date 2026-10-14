@@ -185,10 +185,10 @@
   #mp-calc .mpc__seg-btn--on{background:var(--acc);color:#fff}
   #mp-calc .mpc__note{font-size:16px;color:var(--mute);border-top:1px solid var(--ink);padding-top:14px}
   @media (min-width:1024px){
-    #mp-calc .mpc{grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:calc(var(--gap) * 2);align-items:start}
-    #mp-calc .mpc__group,#mp-calc .mpc__note{grid-column:1/-1}
-    #mp-calc .mpc__result{grid-column:1;grid-row:2}
-    #mp-calc .mpc__store{grid-column:2;grid-row:2}
+    #mp-calc .mpc__result{grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:calc(var(--gap) * 2);align-items:stretch}
+    #mp-calc .mpc__hero{grid-column:1;grid-row:1;align-content:center}
+    #mp-calc .mpc__rows{grid-column:2;grid-row:1}
+    #mp-calc .mpc__save2{grid-column:1/-1}
   }
 
   /* 계산 기준 */
@@ -415,7 +415,7 @@
         <h2 id="h-contact" data-bind="cta.title"></h2>
         <p class="lead" data-bind="cta.body"></p>
         <a class="tel" id="cta-tel"><span class="tel__label" id="tel-label"></span><span class="tel__num" id="tel-num"></span></a>
-        <p><a class="btn" id="cta-site"></a></p>
+        <p style="display:flex;flex-wrap:wrap;gap:12px"><a class="btn" id="cta-site" target="_blank" rel="noopener"></a><a class="btn" id="cta-analyzer" target="_blank" rel="noopener"></a></p>
       </div>
     </div>
   </div>
@@ -489,6 +489,7 @@
 
   $('tel-label').textContent = C.cta.phoneLabel; $('tel-num').textContent = MP.contact.phone; $('cta-tel').href = MP.contact.tel;
   $('cta-site').innerHTML = '<span>' + C.cta.siteLabel + '</span> <span class="nw">' + MP.contact.site + '</span>'; $('cta-site').href = MP.contact.url;
+  $('cta-analyzer').textContent = C.cta.analyzerLabel; $('cta-analyzer').href = MP.contact.analyzerUrl;
   MP.mountCalc($('mp-calc'));
 })();
 </script>

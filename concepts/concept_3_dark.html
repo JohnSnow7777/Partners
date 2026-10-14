@@ -326,11 +326,10 @@
     .scope{padding:12px 14px}
   }
   @media (min-width:1024px){
-    #mp-calc .mpc{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:28px;align-items:start}
-    #mp-calc .mpc>.mpc__group{grid-column:1;grid-row:1}
-    #mp-calc .mpc>.mpc__result{grid-column:1;grid-row:2}
-    #mp-calc .mpc>.mpc__store{grid-column:2;grid-row:1/span 2;border-top:0;padding-top:0;padding-left:28px;border-left:2px dashed rgba(186,214,255,.22)}
-    #mp-calc .mpc>.mpc__note{grid-column:1/-1}
+    #mp-calc .mpc>.mpc__result{grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:28px;align-items:stretch}
+    #mp-calc .mpc .mpc__hero{grid-column:1;grid-row:1;align-content:center}
+    #mp-calc .mpc .mpc__rows{grid-column:2;grid-row:1}
+    #mp-calc .mpc .mpc__save2{grid-column:1/-1}
   }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
@@ -497,7 +496,8 @@
     <p data-bind="cta.body"></p>
     <div class="cta-row">
       <a class="btn btn--pri" id="cta-tel"></a>
-      <a class="btn btn--ghost" id="cta-site"></a>
+      <a class="btn btn--ghost" id="cta-site" target="_blank" rel="noopener"></a>
+      <a class="btn btn--ghost" id="cta-analyzer" target="_blank" rel="noopener"></a>
     </div>
   </div>
 </section>
@@ -591,6 +591,7 @@
   $('notice').innerHTML = C.basis.notice.map(function (x) { return '<p>' + esc(x) + '</p>'; }).join('');
   $('cta-tel').textContent = C.cta.phoneLabel + ' ' + MP.contact.phone; $('cta-tel').href = MP.contact.tel;
   $('cta-site').textContent = C.cta.siteLabel + ' ' + MP.contact.site; $('cta-site').href = MP.contact.url;
+  $('cta-analyzer').textContent = C.cta.analyzerLabel; $('cta-analyzer').href = MP.contact.analyzerUrl;
   MP.mountCalc($('mp-calc'));
 })();
 </script>

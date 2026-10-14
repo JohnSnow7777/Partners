@@ -12,7 +12,7 @@
   'use strict';
   var MP = (typeof module === 'object' && module.exports) ? require('./model.js') : window.MP;
 
-  MP.contact = { phone: '1544-1448', tel: 'tel:1544-1448', site: 'www.mypark-golf.com', url: 'https://www.mypark-golf.com' };
+  MP.contact = { phone: '1544-1448', tel: 'tel:1544-1448', site: 'www.mypark-golf.com', url: 'https://www.mypark-golf.com', analyzerUrl: 'https://market-analysis-zeta.vercel.app' };
 
   MP.copy = {
     brand: '마이파크 스크린 파크골프',
@@ -164,10 +164,11 @@
       title: '선착순 200대, 지금 상담 신청하세요',
       body: '담당자와 상담하시면 창업 비용을 함께 설계해 드립니다. {base}를 기준으로 안내해 드립니다. 후보 상가 확인과 필요한 자료 조사는 담당자가 대신해 드립니다.',
       phoneLabel: '문의전화',
-      siteLabel: '홈페이지 창업문의'
+      siteLabel: '홈페이지 창업문의',
+      analyzerLabel: '상권 분석기 바로가기'
     },
 
-    footer: '마이파크 공식 창업지원 제휴법인 (주)커넥트 | 문의전화 1544-1448 | www.mypark-golf.com'
+    footer: '마이파크 공식 창업지원 제휴법인 (주)커넥트 | 본사: (주)스마일스퀘어 | 문의전화 1544-1448 | www.mypark-golf.com'
   };
 
   // ── 토큰 치환과 바인딩 ─────────────────────────────────────
