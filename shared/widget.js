@@ -23,15 +23,13 @@
     unit: '대',
     minus: '1대 줄이기',
     plus: '1대 늘리기',
-    heroLabel: '200대 이후 예정가보다 적게 드는 금액',
-    heroSub: '{pct} 할인 (200대 이후 예정가 기준)',
+    heroLabel: '기존 기기값보다 줄어드는 초기 장비 투자금',
+    heroSub: '{pct} 절감 (기존 기기값 기준)',
     rowLegacy: '기존 기기값',
-    rowAfter: '200대 이후 예정가',
     rowPartners: '파트너스 가격',
     rowFormula: '{n}대 × {unit}',
-    save2: '기존 기기값과 비교하면 {amount} 적게 듭니다 ({pct} 절감)',
-    noteBase: '장비 대금 기준 금액입니다.',
-    note200: '200대 이후 가격은 예정 단계이며 변경될 수 있습니다.',
+    save2: '초기 장비 투자금을 {amount} 낮춰 손익분기점을 빠르게 앞당깁니다',
+    noteBase: '장비 대금 기준 금액입니다. 인테리어와 설비 등 장비 외 비용은 별도입니다.',
     max: 200
   };
   MP.UI = UI;
@@ -44,16 +42,15 @@
     var d = MP.discount(n);
     var v = {
       n: n,
-      heroValue: F.eok(d.saveVsAfter),
-      heroSub: UI.heroSub.replace('{pct}', F.pct(d.pctVsAfter)),
+      heroValue: F.eok(d.saveVsLegacy),
+      heroSub: UI.heroSub.replace('{pct}', F.pct(d.pctVsLegacy)),
       rows: [
         { key: 'legacy', label: UI.rowLegacy, value: F.eok(d.legacy), formula: UI.rowFormula.replace('{n}', n).replace('{unit}', MP.V.unitLegacy) },
-        { key: 'after', label: UI.rowAfter, value: F.eok(d.after), formula: UI.rowFormula.replace('{n}', n).replace('{unit}', MP.V.unitAfter) },
         { key: 'partners', label: UI.rowPartners, value: F.eok(d.partners), formula: UI.rowFormula.replace('{n}', n).replace('{unit}', MP.V.unitNew) }
       ],
-      save2: UI.save2.replace('{amount}', F.eok(d.saveVsLegacy)).replace('{pct}', F.pct(d.pctVsLegacy))
+      save2: UI.save2.replace('{amount}', F.eok(d.saveVsLegacy))
     };
-    v.note = UI.noteBase + ' ' + UI.note200;
+    v.note = UI.noteBase;
     return v;
   };
 

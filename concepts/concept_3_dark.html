@@ -220,14 +220,14 @@
   .notice p{margin:0;color:var(--fg2)}
   .notice p+p{margin-top:10px}
 
-  /* 상담 */
-  .cta{padding:48px 40px;text-align:center;position:relative;overflow:hidden;border-color:rgba(103,232,249,.35);
-    background:radial-gradient(120% 140% at 50% 0%,rgba(16,185,129,.22),rgba(10,17,32,.4) 60%)}
-  .cta h2{margin:0 auto}
-  .cta p{color:var(--fg2);margin:18px auto 0;max-width:40em;font-size:1.08rem}
-  .cta .cta-row{justify-content:center}
-  .cta .btn{min-height:64px;font-size:1.15rem;padding:0 30px}
-  footer{margin-top:72px;border-top:1px solid var(--line);padding:28px 0 44px;color:var(--fg2);font-size:1rem}
+  .cta{padding:44px 36px;text-align:center;position:relative;overflow:hidden;border-color:rgba(52,211,153,.55);
+    background:radial-gradient(120% 140% at 50% 0%,rgba(16,185,129,.26),rgba(10,17,32,.65) 65%)}
+  .cta-tag{display:inline-flex;align-items:center;padding:6px 18px;border-radius:999px;font-weight:800;font-size:.98rem;color:var(--ink);background:linear-gradient(120deg,#FCD34D,#F59E0B)}
+  .cta h2{margin:16px auto 0;max-width:22em;font-size:clamp(1.5rem,3.6vw,2.35rem);line-height:1.38}
+  .cta h2 b{color:#FCD34D;font-weight:800}
+  .cta h2 strong{color:var(--em);font-weight:800;display:inline-block}
+  .cta p{color:var(--fg2);margin:14px auto 0;max-width:34em;font-size:1.05rem;line-height:1.65}
+  footer{margin-top:64px;border-top:1px solid var(--line);padding:28px 0 44px;color:var(--fg);font-size:1.08rem;font-weight:800;text-align:center}
 
 
   /* 히어로 범위 안내 */
@@ -253,7 +253,7 @@
   .vs-big{font-size:clamp(2.8rem,5.6vw,4.6rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;margin-top:4px;color:var(--fg)}
   .vs-partners .vs-big{color:#6EE7B7;text-shadow:0 0 36px rgba(52,211,153,.45)}
   .vs-partners .vs-fee{color:var(--cy);text-shadow:0 0 36px rgba(103,232,249,.4)}
-  .vs-note{margin-top:8px;color:var(--fg2);font-size:1.02rem}
+  .vs-note{margin-top:8px;color:var(--fg2);font-size:1.02rem;line-height:1.5}
   .vs-div{height:1px;margin:26px 0 0;background:linear-gradient(90deg,rgba(186,214,255,.35),transparent)}
   .vs-mid{display:flex;align-items:center;justify-content:center;position:relative}
   .vs-mid::before{content:"";position:absolute;top:10%;bottom:10%;left:50%;width:2px;transform:translateX(-50%);background:linear-gradient(180deg,transparent,rgba(103,232,249,.6),transparent)}
@@ -263,18 +263,13 @@
   .vs-points li{counter-increment:vp;padding:20px 22px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:start}
   .vs-points li::before{content:counter(vp);width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-weight:800;color:var(--ink);background:linear-gradient(135deg,var(--em),var(--cy))}
 
-  /* 누적 비용 */
-  .cost-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px;margin-top:20px;align-items:stretch}
-  .insights li.honest{background:rgba(252,211,77,.07);border-left:4px solid #FCD34D}
-  .insights li.honest .ix{background:#FCD34D}
-
   /* 태블릿 이하: 표를 카드로 */
   @media (max-width:900px){
-    .hero-grid,.pb-grid,.cost-grid{grid-template-columns:minmax(0,1fr)}
+    .hero-grid,.pb-grid{grid-template-columns:minmax(0,1fr)}
     .vs-wrap{grid-template-columns:minmax(0,1fr);gap:0}
     .vs-mid{height:84px}
     .vs-mid::before{top:0;bottom:0}
-    .vs-big{font-size:clamp(2.8rem,9vw,4.4rem)}
+    .vs-big{font-size:clamp(2.6rem,8.5vw,4.2rem)}
     .vs-points{grid-template-columns:minmax(0,1fr)}
     .chips,.bill-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     .tbl-box{background:transparent;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
@@ -283,9 +278,9 @@
     .tbl tbody{display:grid;gap:14px}
     .tbl tr{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:linear-gradient(180deg,var(--panel2),var(--panel))}
     .tbl tbody th{padding:14px 18px;border-top:0;font-size:1.12rem;background:rgba(186,214,255,.06);border-bottom:1px solid var(--line)}
-    .tbl td{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:12px 18px;border-top:1px solid var(--line);text-align:right}
+    .tbl td{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 18px;border-top:1px solid var(--line);text-align:right}
     .tbl tbody th + td{border-top:0}
-    .tbl td::before{content:attr(data-label);color:var(--fg2);font-weight:600;text-align:left;flex:1 1 auto}
+    .tbl td::before{content:attr(data-label);color:var(--fg2);font-weight:600;text-align:left;flex:0 0 auto}
     .tbl tr.key{border-color:rgba(52,211,153,.5)}
     .tbl tr.key th,.tbl tr.key td{font-size:1.06rem}
     .tbl .c-new{background:rgba(16,185,129,.1)}
@@ -294,15 +289,13 @@
     .stat-v{font-size:1.35rem}
   }
   @media (max-width:760px){
-    .stats,.ex-grid,.duo,.flow,.bill-grid{grid-template-columns:minmax(0,1fr)}
+    .stats,.duo,.flow,.bill-grid{grid-template-columns:minmax(0,1fr)}
     .flow::before{left:43px;right:auto;top:30px;bottom:30px;width:2px;height:auto;background:linear-gradient(180deg,var(--em),var(--cy))}
-    .basis-list{grid-template-columns:minmax(0,1fr)}
-    .basis-list li:nth-child(odd){border-right:0}
   }
   @media (max-width:560px){
     .wrap{padding:0 16px}
-    main>section.wrap{padding-top:72px}
-    main>section.hero{padding-top:36px}
+    main>section.wrap{padding-top:68px}
+    main>section.hero{padding-top:32px}
     .top .wrap{min-height:62px}
     .brand{font-size:.98rem;gap:10px}
     .brand .mark{width:24px;height:24px;border-radius:7px}
@@ -310,14 +303,10 @@
     .btn--sm{padding:0 14px}
     .cta-row .btn{width:100%}
     .panel-h{padding:14px 16px}
-    .chart-body{padding:10px 14px 16px}
-    .insights li{padding:16px;gap:12px}
     .chips{grid-template-columns:minmax(0,1fr);padding:16px}
     .calc-body{padding:18px 16px}
-    .cta{padding:36px 18px}
-    .save-panel,.stat,.ex,.step{padding:20px}
-    .basis-list li{padding:14px 16px 14px 40px}
-    .basis-list li::before{left:18px;top:25px}
+    .cta{padding:32px 18px}
+    .save-panel,.stat,.step{padding:20px}
     .ul li{padding:13px 16px 13px 42px}
     .ul li::before{left:18px;top:23px}
     .kpi-strip{padding:18px}
@@ -343,9 +332,6 @@
   .intro-legacy{margin-top:16px;padding:18px 22px;font-size:1.05rem;line-height:1.7}
   @media (max-width:1000px){.intro-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media (max-width:560px){.intro-grid{grid-template-columns:minmax(0,1fr)}}
-  .intro-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .mk-v{display:block;font-size:clamp(2rem,3.4vw,2.8rem);font-weight:800;line-height:1.15;color:#6EE7B7;letter-spacing:-.02em}
-  @media (max-width:900px){.intro-grid.three{grid-template-columns:minmax(0,1fr)}}
 </style>
 <meta name="description" content="스크린 파크골프 파트너스 창업 프로그램. 10대 기준 장비 대금 9,900만원, 기기 1대 990만원, 월 기기당 고정비 0원. 선착순 200대 한정 모집.">
 <meta name="theme-color" content="#0F7A5C">
@@ -363,7 +349,7 @@
 <header class="top">
   <div class="wrap">
     <span class="brand"><span class="mark" aria-hidden="true"></span><span data-bind="brand"></span></span>
-    <a class="btn btn--ghost btn--sm" href="#contact" data-bind="hero.ctaSecondary"></a>
+    <a class="btn btn--ghost btn--sm" href="#calc" data-bind="hero.ctaPrimary"></a>
   </div>
 </header>
 
@@ -377,7 +363,7 @@
       <p class="scope" data-bind="hero.scope"></p>
       <div class="cta-row">
         <a class="btn btn--pri" href="#calc" data-bind="hero.ctaPrimary"></a>
-        <a class="btn btn--ghost" href="#contact" data-bind="hero.ctaSecondary"></a>
+        <a class="btn btn--ghost" href="#vs" data-bind="hero.ctaSecondary"></a>
       </div>
     </div>
     <div class="panel save-panel">
@@ -388,16 +374,6 @@
     </div>
   </div>
   <div class="stats" id="stats"></div>
-</section>
-
-<section class="wrap" id="market">
-  <div class="sec-head">
-    <div class="eyebrow">파크골프 현황</div>
-    <h2 data-bind="market.title"></h2>
-    <p class="lead" data-bind="market.lead"></p>
-  </div>
-  <div class="intro-grid three" id="market-items"></div>
-  <p class="foot" data-bind="market.source"></p>
 </section>
 
 <section class="wrap" id="intro">
@@ -424,7 +400,7 @@
 <section class="wrap" id="vs">
   <div class="sec-head">
     <div class="eyebrow">비교</div>
-    <h2 data-bind="vs.title"></h2>
+    <h2>기기값과 매달 내는 비용이<br>이렇게 다릅니다</h2>
     <p class="lead" data-bind="vs.lead"></p>
   </div>
   <div class="vs-wrap" id="vs-box"></div>
@@ -443,7 +419,7 @@
 <section class="wrap" id="partners">
   <div class="sec-head">
     <div class="eyebrow">상생 구조</div>
-    <h2 data-bind="partnership.title"></h2>
+    <h2>본사도 매장 이용이 늘어야<br>수입이 늘어나는 구조입니다</h2>
     <p class="lead" data-bind="partnership.lead"></p>
   </div>
   <div class="flow" id="steps"></div>
@@ -453,18 +429,6 @@
   </div>
   <div class="panel support"><div class="panel-h"><h3 class="panel-t"><span class="dot dot--cy" aria-hidden="true"></span><span data-bind="partnership.support.title"></span></h3></div><ul class="chips" id="support"></ul></div>
   <p class="panel trust" data-bind="partnership.trust"></p>
-</section>
-
-<section class="wrap" id="limited">
-  <div class="sec-head">
-    <div class="eyebrow">한정 조건</div>
-    <h2 data-bind="limited.title"></h2>
-    <p class="lead" data-bind="limited.lead"></p>
-  </div>
-  <div class="panel tbl-box"><table class="tbl" id="t-limited"></table></div>
-  <h3 class="ex-title" data-bind="limited.examplesTitle"></h3>
-  <div class="ex-grid" id="examples"></div>
-  <p class="foot" data-bind="limited.note"></p>
 </section>
 
 <section class="wrap" id="calc">
@@ -479,26 +443,11 @@
   </div>
 </section>
 
-<section class="wrap" id="basis">
-  <div class="sec-head">
-    <div class="eyebrow">기준</div>
-    <h2 data-bind="basis.title"></h2>
-    <p class="lead" data-bind="basis.lead"></p>
-  </div>
-  <div class="panel"><ul class="basis-list" id="basis-items"></ul></div>
-  <div class="panel notice" id="notice"></div>
-</section>
-
-<section class="wrap" id="contact">
+<section class="wrap" id="point">
   <div class="panel cta">
-    <div class="eyebrow">상담</div>
-    <h2 data-bind="cta.title"></h2>
-    <p data-bind="cta.body"></p>
-    <div class="cta-row">
-      <a class="btn btn--pri" id="cta-tel"></a>
-      <a class="btn btn--ghost" id="cta-site" target="_blank" rel="noopener"></a>
-      <a class="btn btn--ghost" id="cta-analyzer" target="_blank" rel="noopener"></a>
-    </div>
+    <span class="cta-tag" data-bind="point.tag"></span>
+    <h2><b>초기 투자금은 대폭 낮추고</b><br><b>손익분기점</b>을 가장 빠르게<br>앞당기는 <strong>최적의 창업 방식</strong></h2>
+    <p data-bind="point.desc"></p>
   </div>
 </section>
 </main>
@@ -529,20 +478,19 @@
 
   MP.bind();
 
-  // 히어로 제목: 기준 대수 장비 대금만 빛나게
+  // 히어로 제목: 기준 대수 장비 대금만 빛나게 (스마트폰 줄바꿈 균형)
   var title = C.hero.title, k = title.indexOf(V.equipNew10), h1 = $('hero-title');
   if (k >= 0) {
-    h1.appendChild(document.createTextNode(title.slice(0, k)));
-    var hl = document.createElement('span'); hl.className = 'hl num'; hl.textContent = V.equipNew10; h1.appendChild(hl);
-    h1.appendChild(document.createTextNode(title.slice(k + V.equipNew10.length)));
+    var prefix = title.slice(0, k).replace(', ', '<br>');
+    h1.innerHTML = prefix + '<span class="hl num">' + esc(V.equipNew10) + '</span>' + esc(title.slice(k + V.equipNew10.length));
   } else h1.textContent = title;
 
   // 히어로 장비 대금 막대 (기준 대수)
   var d = MP.discount(MP.P.baseUnits);
   $('hero-num-l').textContent = C.stats[0].label;
   $('hero-bars').innerHTML = [
-    { l: '기존', v: V.equipLegacy10, w: 1, c: 'old' },
-    { l: '파트너스', v: V.equipNew10, w: d.partners / d.legacy, c: 'new' }
+    { l: '기존 기기값', v: V.equipLegacy10, w: 1, c: 'old' },
+    { l: '파트너스 방식', v: V.equipNew10, w: d.partners / d.legacy, c: 'new' }
   ].map(function (b) {
     return '<div class="mbar"><div class="mbar-top"><span>' + b.l + '</span><b class="num">' + esc(b.v) + '</b></div>' +
       '<div class="mbar-track"><div class="mbar-fill ' + b.c + '" style="width:' + (b.w * 100).toFixed(2) + '%"></div></div></div>';
@@ -555,18 +503,18 @@
   table($('t-compare'), C.compare.headers, T.compare, { cols: [null, null, 'c-new', 'c-diff'],
     key: T.compare.map(function (r, i) { return r[0] === C.stats[0].label ? i : -1; }) });
 
-  // 주제 2: 두 큰 패널
+  // 주제 2: 두 큰 패널 (스마트폰 2줄 대칭 줄맞춤)
   function side(o, cls) {
+    var noteHtml = esc(o.feeNote).replace(', ', '<br>');
     return '<div class="panel vs-side ' + cls + '"><span class="vs-tag">' + esc(o.tag) + '</span>' +
       '<div class="vs-k">' + esc(o.priceNote) + '</div><div class="vs-big num">' + esc(o.price) + '</div>' +
       '<div class="vs-div" aria-hidden="true"></div>' +
       '<div class="vs-k">' + esc(o.feeTitle) + '</div><div class="vs-big vs-fee num">' + esc(o.fee) + '</div>' +
-      '<div class="vs-note">' + esc(o.feeNote) + '</div></div>';
+      '<div class="vs-note">' + noteHtml + '</div></div>';
   }
   $('vs-box').innerHTML = side(C.vs.legacy, 'vs-legacy') + '<div class="vs-mid"><span>' + esc(C.vs.mid) + '</span></div>' + side(C.vs.partners, 'vs-partners');
   $('vs-points').innerHTML = C.vs.points.map(function (p) { return '<li class="panel"><span>' + esc(p) + '</span></li>'; }).join('');
 
-  $('market-items').innerHTML = C.market.items.map(function (it) { return '<div class="panel intro-card"><span class="mk-v num">' + esc(it.value).replace(/ /g, ' ') + '</span><h3>' + esc(it.label) + '</h3><p>' + esc(it.body) + '</p></div>'; }).join('');
   $('intro-items').innerHTML = C.intro.items.map(function (it, i) { return '<div class="panel intro-card"><span class="ix num" aria-hidden="true">' + (i + 1) + '</span><h3>' + esc(it.title) + '</h3><p>' + esc(it.body) + '</p></div>'; }).join('');
   $('billing-items').innerHTML = C.billing.items.map(function (it, i) {
     return '<article class="panel bill' + (i === 0 ? ' bill--zero' : '') + '"><div class="bill-top"><span class="bill-ix num" aria-hidden="true">' + (i + 1) + '</span><span class="bill-line" aria-hidden="true"></span></div>' +
@@ -578,20 +526,6 @@
   }).join('');
   list($('owner'), C.partnership.owner.items); list($('hq'), C.partnership.hq.items); list($('support'), C.partnership.support.items);
 
-  table($('t-limited'), C.limited.headers, C.limited.rows, { cols: [null, 'c-new', null] });
-  $('examples').innerHTML = [8, 10, 20].map(function (n) {
-    var dd = MP.discount(n);
-    return '<div class="panel ex"><div class="ex-top"><span class="ex-n">' + n + '대 구매</span><span class="ex-tag">할인</span></div>' +
-      '<div class="ex-v num">' + F.man(dd.saveVsAfter) + '</div>' +
-      '<dl><div><dt>' + MP.UI.rowAfter + '</dt><dd class="num">' + F.eok(dd.after) + '</dd></div>' +
-      '<div><dt>' + MP.UI.rowPartners + '</dt><dd class="num" style="color:var(--em)">' + F.eok(dd.partners) + '</dd></div></dl></div>';
-  }).join('');
-
-  list($('basis-items'), C.basis.items);
-  $('notice').innerHTML = C.basis.notice.map(function (x) { return '<p>' + esc(x) + '</p>'; }).join('');
-  $('cta-tel').textContent = C.cta.phoneLabel + ' ' + MP.contact.phone; $('cta-tel').href = MP.contact.tel;
-  $('cta-site').textContent = C.cta.siteLabel + ' ' + MP.contact.site; $('cta-site').href = MP.contact.url;
-  $('cta-analyzer').textContent = C.cta.analyzerLabel; $('cta-analyzer').href = MP.contact.analyzerUrl;
   MP.mountCalc($('mp-calc'));
 })();
 </script>
